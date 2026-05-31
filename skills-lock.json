@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "astro": {
+      "source": "git@github.com:astrolicious/agent-skills.git",
+      "sourceType": "git",
+      "computedHash": "ebefe26b231d32379c14e41a46c2de7b4b0184543bedab7febdabe4fb21fba4e"
+    },
+    "frontend-design": {
+      "source": "git@github.com:anthropics/skills.git",
+      "sourceType": "git",
+      "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
+    },
+    "shadcn-ui": {
+      "source": "git@github.com:google-labs-code/stitch-skills.git",
+      "sourceType": "git",
+      "computedHash": "dadbca54d35a33fe73e40018611af2179689305bf6da812ab2643987fefd9da3"
+    },
+    "tailwind-best-practices": {
+      "source": "git@github.com:mastra-ai/mastra.git",
+      "sourceType": "git",
+      "computedHash": "7a94bb24f938aec684feaf5d93e862bc3c854d86d7d7d472293be793a2f4bda2"
+    }
+  }
+}

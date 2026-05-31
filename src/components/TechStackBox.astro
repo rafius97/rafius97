@@ -1,0 +1,47 @@
+---
+interface TechStack {
+  name: string;
+  image: string;
+}
+
+interface Props {
+  title: string;
+  stacks: TechStack[];
+}
+
+const { title, stacks } = Astro.props;
+---
+
+<div
+  class="flex flex-col bg-[#131313]/50 backdrop-blur-md p-6 rounded-[20px] gap-4 border border-white/5 shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
+>
+  <div class="flex items-center gap-2">
+    <div
+      class="w-1.5 h-5 rounded-full bg-gradient-to-b from-primary-gradient-1 to-primary-gradient-2"
+    >
+    </div>
+    <span class="text-[18px] font-bold text-foreground">{title}</span>
+  </div>
+
+  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 mt-2">
+    {
+      stacks.map((stack) => (
+        <a
+          href={`/projects?techs=${encodeURIComponent(stack.name)}`}
+          class="flex flex-col items-center justify-center gap-2 p-3 rounded-[14px] bg-black/40 border border-white/5 hover:border-[#ff2975]/50 hover:bg-black/60 transition-all duration-300 group/tech cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(255,41,117,0.2)]"
+        >
+          <div class="flex justify-center">
+            <img
+              src={stack.image}
+              alt={stack.name}
+              class="size-8 object-contain group-hover/tech:scale-110 transition-transform duration-300"
+            />
+          </div>
+          <div class="text-[11px] font-medium text-foreground/60 group-hover/tech:text-foreground/90 text-center truncate w-full transition-colors">
+            {stack.name}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>

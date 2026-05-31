@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --radius: 24px;
+  --background: #1a1a1a;
+  --foreground: #f0f0f0;
+  --card: #161216;
+  --card-foreground: #ede9f3;
+  --primary: #fa01fa;
+  --primary-foreground: #fff;
+  --primary-gradient-1: #ffd319;
+  --primary-gradient-2: #ff2975;
+  --secondary: #010839;
+  --secondary-foreground: #cfc5ff;
+  --border: #2a1733;
+  --input: #0f0b16;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 18px);
+  --radius-md: calc(var(--radius) - 12px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 24px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-gradient: var(--gradient);
+  --color-gradient-hover: var(--gradient-hover);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-gradient-1: var(--primary-gradient-1);
+  --color-primary-gradient-2: var(--primary-gradient-2);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --animate-grid: grid 15s linear infinite;
+
+  @keyframes grid {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+
+  --animate-shine: shine var(--duration) infinite linear;
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
+
+  --animate-float: float 6s ease-in-out infinite;
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 15px rgba(250, 1, 250, 0.2));
+    }
+    50% {
+      filter: drop-shadow(0 0 25px rgba(250, 1, 250, 0.35));
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply w-full m-0;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+}

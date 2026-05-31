@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import type { Company } from '@api/companies';
+import { cn } from '@lib/utils';
+
+interface Props {
+  companies: Company[];
+}
+
+const { companies } = Astro.props;
+---
+
+<div class="relative w-full mx-auto">
+  <!-- Central Line (Responsive: hidden on mobile, visible on md+) -->
+  <div class="absolute md:left-1/2 left-8 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-gradient-1 to-primary-gradient-2 shadow-[0_0_15px_rgba(255,41,117,0.5)] z-0 rounded-full"></div>
+
+  <div class="flex flex-col gap-12 md:gap-16">
+    {companies.map((company, index) => {
+      const isLeft = index % 2 === 0;
+
+      return (
+        <div class={cn("relative flex flex-col md:flex-row items-start md:items-center justify-between w-full group", isLeft ? 'md:flex-row' : 'md:flex-row-reverse')}>
+          
+          <!-- Timeline Node -->
+          <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-14 h-14 rounded-full bg-[#131313] border-2 border-[#ff2975]/50 shadow-[0_0_15px_rgba(255,41,117,0.3)] group-hover:border-[#ff2975] group-hover:shadow-[0_0_20px_rgba(255,41,117,0.6)] transition-all duration-300 z-10 box-content">
+            <Image src={company.logo} alt={`${company.name} logo`} class="w-10 h-10 rounded-[10px] object-cover bg-white/5" />
+          </div>
+
+          <!-- Content Card -->
+          <div class="w-full pl-20 md:pl-0 md:w-[45%]">
+            <a href={`/companies/${company.slug}`} class={cn("block cursor-pointer relative flex flex-col p-6 rounded-[20px] bg-[#131313]/50 backdrop-blur-md border border-white/5 shadow-[0_8px_24px_rgba(0,0,0,0.3)] hover:bg-[#131313]/90 hover:border-[#ff2975]/30 transition-all duration-300", isLeft ? 'md:text-right md:items-end' : 'md:text-left md:items-start')}>
+              
+              <!-- Connection Line (Desktop only) -->
+              <div class={cn("hidden md:block absolute top-1/2 -translate-y-1/2 w-4 md:w-8 h-[2px] bg-[#ff2975]/30 group-hover:bg-[#ff2975]/80 transition-colors z-0", isLeft ? '-right-4 md:-right-[8.5%]' : '-left-4 md:-left-[8.5%]')}></div>
+              
+              <!-- Duration Badge -->
+              <div class="w-auto inline-block px-3 py-1 mb-4 bg-black/40 border border-white/10 rounded-full text-xs font-semibold text-primary-foreground group-hover:border-[#ff2975]/50 group-hover:shadow-[0_0_15px_rgba(255,41,117,0.3)] transition-all">
+                {company.duration}
+              </div>
+
+              <div class="flex flex-col gap-1 w-full">
+                <h3 class="text-2xl font-bold text-foreground/90 group-hover:text-foreground transition-colors">
+                  {company.name}
+                </h3>
+                <h4 class="text-[16px] font-medium text-foreground/60">
+                  {company.position}
+                </h4>
+              </div>
+
+              <p class={cn("mt-4 text-[14px] text-foreground/50 leading-relaxed group-hover:text-foreground/70 transition-colors", isLeft ? 'md:text-right' : 'md:text-left')}>
+                {company.description}
+              </p>
+            </a>
+          </div>
+          
+          <!-- Empty Space for the other side on desktop -->
+          <div class="hidden md:block w-[45%]"></div>
+        </div>
+      );
+    })}
+  </div>
+</div>

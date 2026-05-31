@@ -1,0 +1,24 @@
+---
+import Link from '@components/Link.astro';
+import type { AstroComponent } from '@lucide/astro';
+
+interface Props {
+  name: string;
+  url: string;
+  Logo: AstroComponent;
+}
+
+const { name, url, Logo } = Astro.props;
+---
+
+<Link
+  aria-label=`${name} social profile`
+  variant="secondary"
+  size="icon"
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="w-fit relative overflow-hidden"
+>
+  <Logo />
+</Link>

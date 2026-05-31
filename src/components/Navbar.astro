@@ -1,0 +1,74 @@
+---
+import Link from '@components/Link.astro';
+import { Menu, X } from '@lucide/astro';
+
+const items = [
+  {
+    href: '/#experience',
+    title: 'Experience',
+  },
+  {
+    href: '/#projects',
+    title: 'Projects',
+  },
+  {
+    href: '/#contact',
+    title: 'Contact',
+  },
+];
+---
+
+<nav class="relative flex items-center justify-end w-auto">
+  {/* Desktop Menu */}
+  <div class="hidden md:flex items-center gap-5">
+    {
+      items.map((item) => (
+        <Link href={item.href} variant="link" class="w-auto">
+          {item.title}
+        </Link>
+      ))
+    }
+  </div>
+
+  {/* Mobile Menu Toggle Button */}
+  <button id="mobile-menu-toggle" class="md:hidden flex items-center text-foreground z-50 p-2 cursor-pointer transition-transform active:scale-95 hover:opacity-80">
+    <span class="sr-only">Toggle menu</span>
+    <Menu id="menu-icon" class="block w-6 h-6" />
+    <X id="close-icon" class="hidden w-6 h-6" />
+  </button>
+
+  {/* Mobile Menu Overlay */}
+  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[100dvh] bg-background/98 backdrop-blur-lg z-40 flex-col items-start justify-start pt-32 px-8 gap-12 hidden animate-in fade-in duration-200">
+    {
+      items.map((item) => (
+        <a href={item.href} class="text-4xl font-bold tracking-wide text-foreground hover:text-primary-gradient-1 transition-colors mobile-link">
+          {item.title}
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  const toggleMenu = () => {
+    mobileMenu?.classList.toggle('hidden');
+    mobileMenu?.classList.toggle('flex');
+    menuIcon?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('block');
+    closeIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('block');
+    document.body.classList.toggle('overflow-hidden');
+  };
+
+  toggleBtn?.addEventListener('click', toggleMenu);
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+</script>

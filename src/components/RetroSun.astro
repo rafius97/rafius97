@@ -1,0 +1,65 @@
+---
+import { cn } from '@lib/utils';
+
+function getHeightFromRatio(ratio: number, size: number) {
+  if (ratio === 100) return size;
+  return (ratio / 100) * size;
+}
+
+const mask = `linear-gradient(to top,
+         #000 1.5% , #0000 2%   , #0000 5%   , #000 5.5%
+        ,#000 7.5% , #0000 8%   , #0000 10.6%, #000 11.1%
+        ,#000 13.6%, #0000 14.1%, #0000 16.3%, #000 16.8%
+        ,#000 19.8%, #0000 20.3%, #0000 22.1%, #000 22.6%
+        ,#000 26.1%, #0000 26.6%, #0000 28%  , #000 28.5%
+        ,#000 32.5%, #0000 33%  , #0000 34%  , #000 34.5%
+        ,#000 39%  , #0000 39.5%, #0000 40.1%, #000 40.6%
+        ,#000 46.6%, #0000 47.1%, #0000 47.5%, #000 48%
+        ,#000 53.5%, #0000 54%  , #0000 54.2%, #000 0
+     ) no-repeat`;
+
+const color = '#f9124f';
+
+interface Props {
+  width?: number;
+  height?: number;
+  size?: number;
+  ratio?: number;
+  class?: string;
+}
+
+const {
+  width,
+  height,
+  size = 250,
+  ratio = 100,
+  class: className,
+} = Astro.props;
+---
+
+<div
+  class={cn('absolute overflow-hidden', className)}
+  style={{
+    filter: `drop-shadow(0 0 min(20px, 5vmin) ${color})`,
+    height: `${getHeightFromRatio(ratio, size)}px`,
+  }}
+>
+  <div
+    class="absolute rounded-[50%]"
+    style={{
+      width: `min(80vmin, ${size ?? width}px)`,
+      height: `min(80vmin, ${size ?? height}px)`,
+      background: `radial-gradient(circle at center, ${color} 0, ${color} 53%, transparent 60%)`,
+      fontSize: 0,
+    }}
+  >
+    <div
+      class="absolute inset-0 rounded-[inherit] bg-linear-[#fcc22f,#f945e5]"
+      style={{
+        WebkitMask: mask,
+        mask,
+      }}
+    >
+    </div>
+  </div>
+</div>
