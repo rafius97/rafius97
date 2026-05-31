@@ -19,11 +19,9 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
             href={`/projects/${project.slug}`}
             className={cn(
               'group relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-lg p-6 md:flex-row md:items-center',
-              // light styles
               'bg-card shadow-[0_8px_24px_rgba(0,0,0,0.3)]',
-              // dark styles
-              'transform-gpu dark:bg-card dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]',
-              'transition-all duration-300 hover:dark:[border:1px_solid_rgba(255,41,117,.3)] hover:dark:[box-shadow:0_0_20px_rgba(255,41,117,0.1)_inset]',
+              'transform-gpu [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]',
+              'transition-all duration-300 hover:[border:1px_solid_rgba(255,41,117,.3)] hover:[box-shadow:0_0_20px_rgba(255,41,117,0.1)_inset]',
             )}
           >
             {/* Background Image */}
@@ -51,7 +49,7 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
               </div>
 
               <div className='flex min-w-0 flex-grow flex-col'>
-                <h3 className='flex items-center gap-3 truncate font-bold text-neutral-700 text-xl transition-colors duration-300 md:text-2xl dark:text-neutral-100'>
+                <h3 className='flex items-center gap-3 truncate font-bold text-neutral-100 text-xl transition-colors duration-300 md:text-2xl'>
                   {project.title}
                 </h3>
                 <p className='mt-2 line-clamp-2 max-w-2xl text-neutral-400 text-sm md:text-base'>
@@ -89,7 +87,7 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
               </div>
             </div>
 
-            <div className='pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/3 group-hover:dark:bg-neutral-800/10' />
+            <div className='pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-neutral-800/10' />
           </a>
         );
       })}

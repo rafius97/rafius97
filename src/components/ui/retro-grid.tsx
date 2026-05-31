@@ -63,7 +63,7 @@ export function RetroGrid({
         <div className='inset-[0%_0px] ml-[-200%] h-[300vh] w-[600vw] origin-[100%_0_0] animate-grid bg-[linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] bg-size-[var(--cell-size)_var(--cell-size)] bg-repeat dark:bg-[linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]' />
       </div>
 
-      <div className='absolute inset-0 bg-linear-to-t from-white to-90% to-transparent dark:from-black' />
+      <div className='absolute inset-0 bg-linear-to-t from-background to-90% to-transparent' />
     </div>
   );
 }
