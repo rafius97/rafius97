@@ -10,27 +10,31 @@ import {
 } from '@components/ui/dialog';
 import { Input } from '@components/ui/input';
 import { Textarea } from '@components/ui/textarea';
+import { useForm, ValidationError } from '@formspree/react';
 import { CheckCircle2, Mail, MessageSquare, Send, User } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function ContactButtonModal() {
   const [open, setOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [state, handleSubmit, reset] = useForm('mgoqglnb');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate API call for now
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setTimeout(() => {
+  useEffect(() => {
+    if (state.succeeded) {
+      const timer = setTimeout(() => {
         setOpen(false);
-        setTimeout(() => setIsSuccess(false), 300); // Reset state after closing
       }, 2000);
-    }, 1500);
-  };
+      return () => clearTimeout(timer);
+    }
+  }, [state.succeeded]);
+
+  useEffect(() => {
+    if (!open) {
+      const timer = setTimeout(() => {
+        reset();
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [open, reset]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -52,7 +56,7 @@ export function ContactButtonModal() {
           </DialogDescription>
         </DialogHeader>
 
-        {isSuccess ? (
+        {state.succeeded ? (
           <div className='fade-in zoom-in flex animate-in flex-col items-center justify-center py-12 text-center duration-300'>
             <div className='mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10'>
               <CheckCircle2 className='h-8 w-8 text-green-500' />
@@ -79,9 +83,15 @@ export function ContactButtonModal() {
                 </label>
                 <Input
                   id='name'
+                  name='name'
                   required
                   placeholder='Full name'
                   icon={<User className='size-4' />}
+                />
+                <ValidationError
+                  field='name'
+                  prefix='Name'
+                  errors={state.errors}
                 />
               </div>
 
@@ -94,10 +104,16 @@ export function ContactButtonModal() {
                 </label>
                 <Input
                   id='email'
+                  name='email'
                   type='email'
                   required
                   placeholder='name@company.com'
                   icon={<Mail className='size-4' />}
+                />
+                <ValidationError
+                  field='email'
+                  prefix='Email'
+                  errors={state.errors}
                 />
               </div>
 
@@ -110,10 +126,16 @@ export function ContactButtonModal() {
                 </label>
                 <Textarea
                   id='message'
+                  name='message'
                   required
                   rows={4}
                   placeholder="Hi Rafael, I'd like to discuss a retro-futuristic UI project..."
                   icon={<MessageSquare className='size-4' />}
+                />
+                <ValidationError
+                  field='message'
+                  prefix='Message'
+                  errors={state.errors}
                 />
               </div>
             </div>
@@ -134,10 +156,10 @@ export function ContactButtonModal() {
                 </DialogClose>
                 <Button
                   type='submit'
-                  disabled={isSubmitting}
+                  disabled={state.submitting}
                   className='min-w-[140px] sm:w-fit'
                 >
-                  {isSubmitting ? (
+                  {state.submitting ? (
                     <span className='flex w-fit items-center gap-2'>
                       <span className='h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-white/30 border-t-white'></span>
                       <span>Sending...</span>
