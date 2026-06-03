@@ -142,7 +142,7 @@ export function ContactButtonModal() {
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Hi Rafael, I'd like to discuss a retro-futuristic UI project..."
+                  placeholder="Hi Rafael, I'd like to discuss a potential collaboration..."
                   icon={<MessageSquare className='size-4' />}
                 />
                 <ValidationError
