@@ -18,6 +18,10 @@ export function ContactButtonModal() {
   const [open, setOpen] = useState(false);
   const [state, handleSubmit, reset] = useForm('mgoqglnb');
 
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
   useEffect(() => {
     if (state.succeeded) {
       const timer = setTimeout(() => {
@@ -31,6 +35,9 @@ export function ContactButtonModal() {
     if (!open) {
       const timer = setTimeout(() => {
         reset();
+        setName('');
+        setEmail('');
+        setMessage('');
       }, 300);
       return () => clearTimeout(timer);
     }
@@ -85,6 +92,8 @@ export function ContactButtonModal() {
                   id='name'
                   name='name'
                   required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   placeholder='Full name'
                   icon={<User className='size-4' />}
                 />
@@ -107,6 +116,8 @@ export function ContactButtonModal() {
                   name='email'
                   type='email'
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder='name@company.com'
                   icon={<Mail className='size-4' />}
                 />
@@ -129,6 +140,8 @@ export function ContactButtonModal() {
                   name='message'
                   required
                   rows={4}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Hi Rafael, I'd like to discuss a retro-futuristic UI project..."
                   icon={<MessageSquare className='size-4' />}
                 />
@@ -156,7 +169,7 @@ export function ContactButtonModal() {
                 </DialogClose>
                 <Button
                   type='submit'
-                  disabled={state.submitting}
+                  disabled={state.submitting || !name || !email || !message}
                   className='min-w-[140px] sm:w-fit'
                 >
                   {state.submitting ? (
