@@ -101,6 +101,193 @@
       filter: drop-shadow(0 0 25px rgba(250, 1, 250, 0.35));
     }
   }
+
+  --animate-glitch: glitch 14s steps(1) infinite;
+  @keyframes glitch {
+    0%,
+    100% {
+      clip-path: none;
+      transform: translate(0);
+      opacity: 0;
+    }
+    5% {
+      clip-path: inset(15% 0 60% 0);
+      transform: translate(-6px, 2px);
+      opacity: 0.4;
+    }
+    5.5% {
+      clip-path: inset(55% 0 10% 0);
+      transform: translate(4px, -1px);
+      opacity: 0.35;
+    }
+    6% {
+      clip-path: none;
+      transform: translate(0);
+      opacity: 0;
+    }
+    20% {
+      clip-path: inset(40% 0 30% 0);
+      transform: translate(8px, 0);
+      opacity: 0.45;
+    }
+    20.5% {
+      clip-path: inset(10% 0 70% 0);
+      transform: translate(-5px, 3px);
+      opacity: 0.3;
+    }
+    21% {
+      clip-path: none;
+      transform: translate(0);
+      opacity: 0;
+    }
+    41% {
+      clip-path: inset(60% 0 5% 0);
+      transform: translate(3px, -2px);
+      opacity: 0.4;
+    }
+    41.5% {
+      clip-path: inset(5% 0 80% 0);
+      transform: translate(-7px, 1px);
+      opacity: 0.35;
+    }
+    42% {
+      clip-path: none;
+      transform: translate(0);
+      opacity: 0;
+    }
+    62% {
+      clip-path: inset(25% 0 50% 0);
+      transform: translate(5px, 2px);
+      opacity: 0.4;
+    }
+    62.5% {
+      clip-path: none;
+      transform: translate(0);
+      opacity: 0;
+    }
+    80% {
+      clip-path: inset(70% 0 5% 0);
+      transform: translate(-4px, -1px);
+      opacity: 0.35;
+    }
+    80.3% {
+      clip-path: inset(20% 0 55% 0);
+      transform: translate(6px, 0);
+      opacity: 0.3;
+    }
+    80.6% {
+      clip-path: none;
+      transform: translate(0);
+      opacity: 0;
+    }
+  }
+
+  --animate-glitch-color: glitch-color 14s steps(1) infinite;
+  @keyframes glitch-color {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 15px rgba(250, 1, 250, 0.2));
+      opacity: 0;
+    }
+    5% {
+      filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.6))
+        hue-rotate(90deg) saturate(1.5);
+      opacity: 0.35;
+    }
+    5.5% {
+      filter: drop-shadow(0 0 20px rgba(255, 0, 100, 0.6))
+        hue-rotate(-30deg) saturate(2);
+      opacity: 0.3;
+    }
+    6% {
+      filter: drop-shadow(0 0 15px rgba(250, 1, 250, 0.2));
+      opacity: 0;
+    }
+    20% {
+      filter: drop-shadow(0 0 25px rgba(0, 255, 100, 0.5))
+        hue-rotate(60deg) saturate(1.8);
+      opacity: 0.4;
+    }
+    21% {
+      filter: drop-shadow(0 0 15px rgba(250, 1, 250, 0.2));
+      opacity: 0;
+    }
+    41% {
+      filter: drop-shadow(0 0 18px rgba(255, 50, 0, 0.5))
+        hue-rotate(-60deg) saturate(1.6);
+      opacity: 0.35;
+    }
+    42% {
+      filter: drop-shadow(0 0 15px rgba(250, 1, 250, 0.2));
+      opacity: 0;
+    }
+    50% {
+      filter: drop-shadow(0 0 25px rgba(250, 1, 250, 0.35));
+      opacity: 0;
+    }
+    62% {
+      filter: drop-shadow(0 0 22px rgba(0, 200, 255, 0.6))
+        hue-rotate(120deg) saturate(1.4);
+      opacity: 0.35;
+    }
+    62.5% {
+      filter: drop-shadow(0 0 15px rgba(250, 1, 250, 0.2));
+      opacity: 0;
+    }
+    80% {
+      filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.6))
+        hue-rotate(-90deg) saturate(2);
+      opacity: 0.35;
+    }
+    80.6% {
+      filter: drop-shadow(0 0 15px rgba(250, 1, 250, 0.2));
+      opacity: 0;
+    }
+  }
+
+  --animate-glitch-flicker: glitch-flicker 14s steps(1) infinite;
+  @keyframes glitch-flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    5.2% {
+      opacity: 0.4;
+    }
+    5.4% {
+      opacity: 1;
+    }
+    20.2% {
+      opacity: 0.6;
+    }
+    20.4% {
+      opacity: 0;
+    }
+    20.6% {
+      opacity: 1;
+    }
+    41.2% {
+      opacity: 0.3;
+    }
+    41.4% {
+      opacity: 1;
+    }
+    62.1% {
+      opacity: 0.5;
+    }
+    62.3% {
+      opacity: 1;
+    }
+    80.1% {
+      opacity: 0.2;
+    }
+    80.4% {
+      opacity: 0.8;
+    }
+    80.6% {
+      opacity: 1;
+    }
+  }
 }
 
 @layer base {

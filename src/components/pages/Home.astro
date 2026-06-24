@@ -75,12 +75,30 @@ import { Mail } from 'lucide-react';
       <div
         class="absolute md:relative right-0 bottom-0 flex h-full w-full md:w-1/2 items-end justify-end md:justify-center overflow-hidden pointer-events-none md:pointer-events-auto z-10 md:z-auto"
       >
-        <div class="absolute bottom-0 md:top-24 lg:top-46 animate-float right-[-10%] md:right-[-20%] lg:right-auto">
-          <img
-            src={RafaelSynthwave.src}
-            alt="Rafael Synthwave"
-            class="h-[600px] md:h-[650px] lg:h-[820px] opacity-80 md:opacity-90 scale-100 md:scale-110 lg:scale-145 max-w-none translate-x-10 md:translate-x-0 lg:translate-x-20 animate-pulse-glow object-contain [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]"
-          />
+      <div class="absolute bottom-0 md:top-24 lg:top-46 animate-float right-[-10%] md:right-[-20%] lg:right-auto">
+          <div class="relative">
+            <img
+              src={RafaelSynthwave.src}
+              alt="Rafael Synthwave"
+              class="h-[600px] md:h-[650px] lg:h-[820px] opacity-80 md:opacity-90 scale-100 md:scale-110 lg:scale-145 max-w-none translate-x-10 md:translate-x-0 lg:translate-x-20 animate-glitch-flicker object-contain [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]"
+            />
+
+            <img
+              src={RafaelSynthwave.src}
+              alt=""
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 h-[600px] md:h-[650px] lg:h-[820px] opacity-0 scale-100 md:scale-110 lg:scale-145 max-w-none translate-x-10 md:translate-x-0 lg:translate-x-20 animate-glitch object-contain [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [animation-delay:0.1s]"
+              style="filter: drop-shadow(2px 0 0 rgba(0, 255, 255, 0.3));"
+            />
+
+            <img
+              src={RafaelSynthwave.src}
+              alt=""
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 h-[600px] md:h-[650px] lg:h-[820px] opacity-0 scale-100 md:scale-110 lg:scale-145 max-w-none translate-x-10 md:translate-x-0 lg:translate-x-20 animate-glitch-color object-contain [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [animation-delay:0.2s]"
+              style="filter: drop-shadow(-2px 0 0 rgba(255, 0, 100, 0.3));"
+            />
+          </div>
         </div>
       </div>
     </div>
