@@ -276,7 +276,7 @@ export const projectsEn: Project[] = [
       getTechnologyByName('Viem'),
       getTechnologyByName('Wagmi'),
     ],
-    headerImage: 'src/assets/projects/marketplace/header-image.svg',
+    headerImage: 'src/assets/projects/marketplace/header-image.png',
     featured: true,
   },
   {
@@ -749,7 +749,7 @@ export const projectsEs: Project[] = [
       getTechnologyByName('Viem'),
       getTechnologyByName('Wagmi'),
     ],
-    headerImage: 'src/assets/projects/marketplace/header-image.svg',
+    headerImage: 'src/assets/projects/marketplace/header-image.png',
     featured: true,
   },
   {
