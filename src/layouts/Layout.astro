@@ -4,16 +4,20 @@ import '@styles/global.css';
 import Link from '@components/Link.astro';
 import Navbar from '@components/Navbar.astro';
 import { Terminal } from '@lucide/astro';
+import LanguagePicker from '@components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 interface Props {
   title: string;
 }
 
 const { title = 'Rafael Romero - Portfolio' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -21,12 +25,27 @@ const { title = 'Rafael Romero - Portfolio' } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ClientRouter />
+    <script is:inline>
+      (function() {
+        if (typeof window !== 'undefined') {
+          const path = window.location.pathname;
+          const preferredLang = localStorage.getItem('preferred_lang');
+          
+          if (!preferredLang && path === '/') {
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang && browserLang.toLowerCase().startsWith('es')) {
+              window.location.replace('/es/');
+            }
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <main class="flex flex-col py-6">
       <div class="flex items-center justify-between px-6 md:px-[72px] py-4 relative z-50">
         <Link
-          href="/"
+          href={lang === 'es' ? '/es/' : '/'}
           rel="noopener noreferrer"
           variant="plain"
           class="flex w-fit items-center gap-3"

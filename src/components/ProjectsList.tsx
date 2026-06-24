@@ -2,21 +2,30 @@ import { getCompanyById } from '@api/companies';
 import type { Project } from '@api/projects';
 import { cn } from '@lib/utils';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
+import { useTranslations } from '@i18n/utils';
+import type { defaultLang } from '@i18n/ui';
+import type { Languages } from '@api/companies';
 
-export function ProjectsList({ projects }: { projects: Project[] }) {
+interface Props {
+  projects: Project[];
+  lang?: Languages;
+}
+
+export function ProjectsList({ projects, lang = 'en' }: Props) {
+  const t = useTranslations(lang as typeof defaultLang);
   if (!projects || projects.length === 0) return null;
 
   return (
     <div className='flex w-full flex-col gap-4'>
       {projects.map((project) => {
-        const company = getCompanyById(project.companySlug);
+        const company = getCompanyById(project.companySlug, lang);
         const logoSrc =
           typeof company?.logo === 'string' ? company.logo : company?.logo?.src;
 
         return (
           <a
             key={project.slug}
-            href={`/projects/${project.slug}`}
+            href={lang === 'es' ? `/es/projects/${project.slug}` : `/projects/${project.slug}`}
             className={cn(
               'group relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-lg p-6 md:flex-row md:items-center',
               'bg-card shadow-[0_8px_24px_rgba(0,0,0,0.3)]',
@@ -82,7 +91,7 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
             {/* Action */}
             <div className='relative z-10 mt-4 flex w-full shrink-0 justify-end md:mt-0 md:w-auto'>
               <div className='pointer-events-auto flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2.5 font-medium text-[13px] text-white/80 transition-colors duration-300 hover:border-[#ff2975]/30 hover:border-white/20 hover:bg-white/10 group-hover:text-white group-hover:shadow-[0_0_15px_rgba(255,41,117,0.2)]'>
-                View Project
+                {t('projects.viewProject')}
                 <ArrowRightIcon className='ms-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#ff2975] rtl:rotate-180' />
               </div>
             </div>

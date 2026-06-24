@@ -4,9 +4,9 @@ import { getProjects } from '@api/projects';
 import { getCompanyById } from '@api/companies';
 
 export function getStaticPaths() {
-  const projects = getProjects('en');
+  const projects = getProjects('es');
   return projects.map((project) => {
-    const company = getCompanyById(project.companySlug, 'en');
+    const company = getCompanyById(project.companySlug, 'es');
 
     if (!company) {
       throw new Error(

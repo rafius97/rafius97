@@ -1,0 +1,169 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+import { Github, ExternalLink } from '@lucide/astro';
+
+import Link from '@components/Link.astro';
+import ProjectGallery from '@components/ProjectGallery';
+
+import type { Technology } from '@api/technologies';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { company, project, achievements, technologies, headerImage, views } =
+  Astro.props;
+---
+
+<Layout title={`Rafael Romero - ${project.title}`}>
+  <div
+    class="max-w-[1440px] mx-auto w-full flex flex-col gap-8 md:gap-14 items-center pb-20 px-6 md:px-[72px]"
+  >
+    <!-- Hero Banner -->
+    <section class="max-w-[1240px] w-full pt-4">
+      <div
+        class="h-auto lg:h-[364px] p-6 lg:p-10 rounded-[24px] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 border border-white/5"
+        style={{
+          background:
+            'radial-gradient(120% 100% at 80% 0%, rgba(255, 41, 117, 0.15) 0%, rgba(1, 8, 57, 0.35) 45%, #1A1A1A 80%), linear-gradient(109.02deg, rgba(1, 8, 57, 0.6) 0%, rgba(26,26,26,0.5) 60%)',
+        }}
+      >
+        <div
+          class="h-full flex flex-col justify-center gap-[14px] w-full lg:max-w-[500px]"
+        >
+          <div
+            class="flex items-center gap-2.5 px-3.5 py-1.5 border border-[#ff2975]/35 rounded-[999px] w-fit bg-[#ff2975]/10"
+          >
+            <Image src={company.logo} alt="Logo" class="size-4 rounded-[4px]" />
+            <span class="text-[13px] font-medium text-foreground/90">
+              {company.position} — {company.name}
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <h1 class="text-[36px] leading-[1.1] font-bold text-foreground">
+              {project.title}
+            </h1>
+            <p class="text-[15px] leading-[1.6] font-medium text-foreground/75">
+              {project.description}
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 mt-2">
+            {project.link && (
+              <Link
+                variant="primary"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-fit"
+              >
+                <ExternalLink class="size-[18px]" />
+                <span class="text-[14px]">{t('project.productSite')}</span>
+              </Link>
+            )}
+            {
+              project.repo && (
+                <Link
+                  variant="secondary"
+                  href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-fit"
+                >
+                  <Github class="size-[18px]" />
+                  <span class="text-[14px]">{t('project.repositories')}</span>
+                </Link>
+              )
+            }
+          </div>
+        </div>
+
+        <div
+          class="relative w-full lg:w-auto h-[290px] flex-1 max-w-full lg:max-w-[560px] rounded-[20px] overflow-hidden border-2 border-white/5 bg-black/40"
+        >
+          <img
+            src={headerImage}
+            alt="Preview"
+            class="w-full h-full object-cover relative z-0"
+          />
+          <div
+            class="absolute inset-0 z-10"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(255, 41, 117, 0.1) 0%, rgba(1, 8, 57, 0.25) 60%, rgba(26, 26, 26, 0.6) 100%)',
+            }}
+          >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Details & Stack -->
+    <section class="max-w-[1240px] w-full grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-12">
+      <!-- Achievements List -->
+      <div class="flex flex-col gap-8">
+        <h2 class="text-[24px] font-bold text-foreground">
+          {t('project.highlights')}
+        </h2>
+        <div class="flex flex-col gap-6">
+          {
+            achievements.map((item: any) => (
+              <div class="relative p-6 rounded-[20px] bg-[#131313]/50 border border-white/5">
+                <div class="absolute -left-[1px] top-6 w-[3px] h-12 bg-linear-90/srgb from-primary-gradient-1 to-primary-gradient-2 rounded-r-full shadow-[0_0_15px_#ff2975]" />
+                <h3 class="text-[18px] font-bold text-foreground mb-2">
+                  {item.title}
+                </h3>
+                <p class="text-[15px] leading-[1.6] text-foreground/65">
+                  {item.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="flex flex-col gap-10">
+        <!-- Technologies -->
+        <div class="flex flex-col gap-5">
+          <h2 class="text-[20px] font-bold text-foreground">{t('project.technologies')}</h2>
+          <div class="flex flex-wrap gap-2.5">
+            {
+              technologies.map((tech: Technology) => (
+                <a
+                  href={`/projects?techs=${tech.name.toLowerCase()}`}
+                  class="group w-fit inline-flex items-center gap-2.5 px-4 py-2 rounded-[999px] border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-[#ff2975]/30 transition-all duration-300 cursor-pointer"
+                >
+                  <img
+                    src={tech.image}
+                    alt={tech.name}
+                    class="size-[16px] object-contain opacity-70 group-hover:opacity-100"
+                  />
+                  <span class="text-[13px] font-medium text-foreground/70 group-hover:text-foreground/90 whitespace-nowrap">
+                    {tech.name}
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Views -->
+    {
+      views && views.length > 0 && (
+        <section class="max-w-[1240px] w-full">
+          <h2 class="text-[22px] font-semibold text-foreground/85 mb-6">
+            {t('project.views')}
+          </h2>
+
+          <ProjectGallery client:load views={views} />
+        </section>
+      )
+    }
+  </div>
+</Layout>

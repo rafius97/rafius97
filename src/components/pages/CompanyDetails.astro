@@ -1,0 +1,127 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { ProjectsGrid } from '@components/ProjectsGrid';
+
+import { getProjectsByCompanyId } from '@api/projects';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { company } = Astro.props;
+
+// Filter projects for this specific company
+const companyProjects = getProjectsByCompanyId(company.slug, lang);
+---
+
+<Layout title={`Rafael Romero - ${company.name}`}>
+  <div
+    class="max-w-[1440px] mx-auto w-full flex flex-col gap-8 md:gap-14 items-center pb-20 px-6 md:px-[72px]"
+  >
+    <!-- Header Banner -->
+    <section class="max-w-[1240px] w-full pt-4">
+      <div
+        class="flex flex-col sm:flex-row p-6 sm:p-8 items-start sm:items-center gap-4 sm:gap-6 rounded-[24px] border border-white/5"
+        style={{
+          background:
+            'radial-gradient(120% 100% at 80% 0%, rgba(255, 41, 117, 0.15) 0%, rgba(1, 8, 57, 0.35) 45%, #1A1A1A 80%), linear-gradient(109.02deg, rgba(1, 8, 57, 0.6) 0%, rgba(26,26,26,0.5) 60%)',
+        }}
+      >
+        <Image
+          src={company.logo}
+          alt="Logo"
+          class="size-[84px] rounded-2xl object-cover bg-white/5 border border-white/10"
+        />
+        <div class="flex flex-col gap-2">
+          <span class="text-[28px] font-bold text-foreground leading-tight">
+            {company.position}
+          </span>
+          <div class="flex items-center gap-2">
+            <span class="text-[18px] font-semibold text-primary-gradient-1"
+              >{company.name}</span
+            >
+            <span class="text-white/20">•</span>
+            <span class="text-[15px] font-medium text-foreground/60">
+              {company.duration}
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Details & Stack -->
+    <section class="max-w-[1240px] w-full grid lg:grid-cols-[1.6fr_1fr] gap-12">
+      <!-- Main Content -->
+      <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-4">
+          <h2 class="text-[20px] font-bold text-foreground">
+            {t('company.about')}
+          </h2>
+          <p class="text-[16px] leading-[1.6] text-foreground/75">
+            {company.description}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <h2 class="text-[20px] font-bold text-foreground">
+            {t('company.responsibilities')}
+          </h2>
+          <div class="flex flex-col gap-5">
+            {
+              company.responsibilities &&
+                company.responsibilities.map((item: any) => (
+                  <div class="relative p-6 rounded-[20px] bg-[#131313]/50 border border-white/5">
+                    <div class="absolute -left-[1px] top-6 w-[3px] h-12 bg-linear-90/srgb from-primary-gradient-1 to-primary-gradient-2 rounded-r-full shadow-[0_0_15px_#ff2975]" />
+                    <h3 class="text-[17px] font-bold text-foreground mb-2">
+                      {item.title}
+                    </h3>
+                    <p class="text-[15px] leading-[1.6] text-foreground/65">
+                      {item.description}
+                    </p>
+                  </div>
+                ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="flex flex-col gap-10">
+        <!-- Technologies -->
+        <div class="flex flex-col gap-5">
+          <h2 class="text-[20px] font-bold text-foreground">{t('project.technologies')}</h2>
+          <div class="flex flex-wrap gap-2.5">
+            {
+              company.technologies &&
+                company.technologies.map((tech: any) => (
+                  <div class="group w-fit inline-flex items-center gap-2.5 px-4 py-2 rounded-[999px] border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-[#ff2975]/30 transition-all duration-300">
+                    <img
+                      src={tech.image}
+                      alt={tech.name}
+                      class="size-[16px] object-contain opacity-70 group-hover:opacity-100"
+                    />
+                    <span class="text-[13px] font-medium text-foreground/70 group-hover:text-foreground/90 whitespace-nowrap">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    {
+      companyProjects.length > 0 && (
+        <section class="max-w-[1240px] w-full">
+          <h2 class="text-[22px] font-semibold text-foreground/85 mb-6">
+            {t('projects.subtitle')}
+          </h2>
+          <ProjectsGrid projects={companyProjects} lang={lang} client:load />
+        </section>
+      )
+    }
+  </div>
+</Layout>

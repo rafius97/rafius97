@@ -20,7 +20,7 @@ export interface Company {
   technologies: { name: string; image: string }[];
 }
 
-export const companies: Company[] = [
+export const companiesEn: Company[] = [
   {
     slug: 'nuklai',
     name: 'Nuklai',
@@ -112,6 +112,100 @@ export const companies: Company[] = [
   },
 ];
 
-export const getCompanies = () => companies;
-export const getCompanyById = (id: string) =>
-  companies.find((company) => company.slug === id);
+export const companiesEs: Company[] = [
+  {
+    slug: 'nuklai',
+    name: 'Nuklai',
+    logo: NuklaiCompany,
+    position: 'Desarrollador Blockchain',
+    duration: 'Noviembre 2023 - Presente',
+    description:
+      'Una red de datos descentralizada profundamente técnica que impulsa la próxima generación de ecosistemas de IA y datos colectivos.',
+    responsibilities: [
+      {
+        title: 'Tuberías de Datos',
+        description:
+          'Supervisé la integración de la funcionalidad de bases de datos Web2 en estructuras robustas y descentralizadas.',
+      },
+      {
+        title: 'Interfaces de Alto Rendimiento',
+        description:
+          'Diseñé estados de aplicación reactivos masivos capaces de mapear cargas de red en vivo limpiamente.',
+      },
+    ],
+    technologies: [
+      { name: 'React', image: ReactIcon.src },
+      { name: 'Node.js', image: NodeIcon.src },
+      { name: 'TypeScript', image: TypescriptIcon.src },
+      { name: 'Solidity', image: SolidityIcon.src },
+    ],
+  },
+  {
+    slug: 'cub3',
+    name: 'CUB3',
+    logo: Cub3Company,
+    position: 'Desarrollador Blockchain',
+    duration: 'Septiembre 2021 - Mayo 2022',
+    description:
+      'Una plataforma que combina Web3 con programas de compromiso y lealtad del mundo real. Permitió a las marcas de consumo ofrecer activos digitales sin problemas.',
+    responsibilities: [
+      {
+        title: 'Paneles de Lealtad',
+        description:
+          'Construí plataformas web de interacción altamente interactivas utilizando los paquetes frontend y Web3 más nuevos.',
+      },
+      {
+        title: 'Abstracción de Contratos Inteligentes',
+        description:
+          'Trabajé extensamente en la creación de abstracciones que reducen la fricción para los usuarios no nativos de blockchain.',
+      },
+    ],
+    technologies: [
+      { name: 'React', image: ReactIcon.src },
+      { name: 'TypeScript', image: TypescriptIcon.src },
+      { name: 'Tailwind CSS', image: TailwindIcon.src },
+      { name: 'Solidity', image: SolidityIcon.src },
+      { name: 'Web3', image: EthersIcon.src },
+    ],
+  },
+  {
+    slug: 'allianceblock',
+    name: 'AllianceBlock',
+    logo: AllianceBlockCompany,
+    position: 'Desarrollador Blockchain',
+    duration: 'Julio 2021 - Octubre 2023',
+    description:
+      'Una startup de blockchain descentralizada que construye infraestructura financiera fluida. Enfocado intensamente en la creación de puentes descentralizados, fondos de liquidez e interfaces seguras de acceso a datos.',
+    responsibilities: [
+      {
+        title: 'Desarrollo del Ecosistema DeFi',
+        description:
+          'Diseñé y mantuve implementaciones integrales de Web3 en ecosistemas de Minería de Liquidez, Puentes y Datos.',
+      },
+      {
+        title: 'Confiabilidad del Frontend',
+        description:
+          'Lideré actualizaciones masivas de UI a proyectos monolíticos existentes mientras establecía tipados estrictos y arquitectura limpia.',
+      },
+      {
+        title: 'Interoperabilidad de Contratos Inteligentes',
+        description:
+          'Construí interfaces estándar que permiten la traducción fluida de la lógica backend de solidity en componentes visuales responsivos.',
+      },
+    ],
+    technologies: [
+      { name: 'React', image: ReactIcon.src },
+      { name: 'TypeScript', image: TypescriptIcon.src },
+      { name: 'Node.js', image: NodeIcon.src },
+      { name: 'Solidity', image: SolidityIcon.src },
+      { name: 'Web3', image: EthersIcon.src },
+      { name: 'Wagmi', image: WagmiIcon.src },
+    ],
+  },
+];
+
+export type Languages = 'en' | 'es';
+
+export const getCompanies = (lang: Languages = 'en') => lang === 'es' ? companiesEs : companiesEn;
+export const getCompanyById = (id: string, lang: Languages = 'en') =>
+  (lang === 'es' ? companiesEs : companiesEn).find((company) => company.slug === id);

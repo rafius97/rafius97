@@ -1,0 +1,135 @@
+---
+import TimelineExperience from '@components/TimelineExperience.astro';
+import Link from '@components/Link.astro';
+import { ProjectsGrid } from '@components/ProjectsGrid';
+import RetroSun from '@components/RetroSun.astro';
+import { RetroGrid } from '@components/ui/retro-grid';
+import Layout from '@layouts/Layout.astro';
+import { Play, Github, Linkedin } from '@lucide/astro';
+import TechStackBox from '@components/TechStackBox.astro';
+
+import { getCompanies } from '@api/companies';
+import { getProjects } from '@api/projects';
+import { getTechnologies } from '@api/technologies';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const companies = getCompanies(lang);
+const projects = getProjects(lang).filter((project) => project.featured);
+const { frontend, backend, blockchain, others } = getTechnologies();
+
+import SocialLink from '@components/SocialLink.astro';
+import { ContactForm } from '@components/ContactForm';
+
+import RafaelSynthwave from '@assets/rafael-synthwave.png';
+import { Mail } from 'lucide-react';
+---
+
+<Layout title={t('home.title')}>
+  <section class="relative h-[700px] w-full">
+    <div
+      class="absolute -z-5 h-[700px] w-full bg-linear-[0deg,rgba(250,1,250,0.05)_0,rgba(1,8,57,0.08)_65%,rgba(1,8,57,0)_100%]"
+    >
+    </div>
+    <RetroGrid className="-z-10" />
+    <RetroSun
+      class="-z-1 top-[95px] flex w-full justify-center opacity-80"
+      ratio={72}
+    />
+
+    <div
+      class="px-6 md:px-[72px] max-w-[1440px] mx-auto w-full flex flex-col md:flex-row items-center h-full relative z-10"
+    >
+      <div class="flex flex-col justify-center h-full gap-4 w-full md:w-1/2 z-20">
+        <span class="text-[40px] md:text-[48px] leading-tight font-semibold">{t('home.greeting')}</span>
+        <span class="font-normal text-[16px] w-full max-w-[468px]">{t('home.description')}</span>
+
+        <div class="flex items-center gap-3">
+          <Link variant="primary" href="#projects" class="w-fit">
+            <Play />
+            <span>{t('home.seeProjects')}</span>
+          </Link>
+          <Link variant="secondary" href={lang === 'es' ? '/es/#contact' : '/#contact'} class="w-fit">
+            <Mail className="w-5 h-5 mr-2" />
+            <span>{t('contact.button')}</span>
+          </Link>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <SocialLink
+            name="Github"
+            Logo={Github}
+            url="https://github.com/rafael-ab"
+          />
+
+          <SocialLink
+            name="LinkedIn"
+            Logo={Linkedin}
+            url="https://www.linkedin.com/in/raerocor97/"
+          />
+        </div>
+      </div>
+
+      <div
+        class="absolute md:relative right-0 bottom-0 flex h-full w-full md:w-1/2 items-end justify-end md:justify-center overflow-hidden pointer-events-none md:pointer-events-auto z-10 md:z-auto"
+      >
+        <div class="absolute bottom-0 md:top-24 lg:top-46 animate-float right-[-10%] md:right-[-20%] lg:right-auto">
+          <img
+            src={RafaelSynthwave.src}
+            alt="Rafael Synthwave"
+            class="h-[600px] md:h-[650px] lg:h-[820px] opacity-80 md:opacity-90 scale-100 md:scale-110 lg:scale-145 max-w-none translate-x-10 md:translate-x-0 lg:translate-x-20 animate-pulse-glow object-contain [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div
+    class="max-w-[1440px] mx-auto w-full flex flex-col gap-8 md:gap-14 items-center pb-20"
+  >
+    <section
+      id="experience"
+      class="w-full max-w-[1240px] flex flex-col gap-4 pt-10 px-6 md:px-[72px]"
+    >
+      <span class="text-[24px] font-semibold text-foreground">{t('nav.experience')}</span>
+      <TimelineExperience companies={companies} />
+    </section>
+
+    <section
+      id="projects"
+      class="w-full max-w-[1240px] flex flex-col gap-4 px-6 md:px-[72px]"
+    >
+      <div
+        class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 w-full"
+      >
+        <span class="text-[24px] font-semibold text-foreground">{t('home.featuredProjects')}</span>
+
+        <Link
+          variant="none"
+          href={lang === 'es' ? '/es/projects' : '/projects'}
+          class="w-fit text-[14px] text-foreground/60 hover:text-primary-gradient-2 transition-colors flex items-center group"
+        >
+          {t('home.viewAllProjects')}
+        </Link>
+      </div>
+
+      <ProjectsGrid projects={projects} lang={lang} client:load />
+    </section>
+
+    <section class="w-full max-w-[1240px] flex flex-col gap-4 px-6 md:px-[72px]">
+      <span class="text-[24px] font-semibold text-foreground">{t('home.techStacks')}</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <TechStackBox title={t('tech.frontend')} stacks={frontend} />
+        <TechStackBox title={t('tech.backend')} stacks={backend} />
+        <TechStackBox title={t('tech.blockchain')} stacks={blockchain} />
+        <TechStackBox title={t('tech.others')} stacks={others} />
+      </div>
+    </section>
+
+    <section id="contact" class="w-full max-w-[1240px] flex flex-col gap-4 px-6 md:px-[72px] pt-10">
+      <ContactForm client:load lang={lang} />
+    </section>
+  </div>
+</Layout>

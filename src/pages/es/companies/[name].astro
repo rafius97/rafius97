@@ -3,7 +3,7 @@ import CompanyDetails from '@components/pages/CompanyDetails.astro';
 import { getCompanies } from '@api/companies';
 
 export function getStaticPaths() {
-  const companies = getCompanies('en');
+  const companies = getCompanies('es');
   return companies.map((company) => {
     return {
       params: { name: company.slug },

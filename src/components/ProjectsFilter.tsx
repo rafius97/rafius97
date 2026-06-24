@@ -13,9 +13,16 @@ import { $search, $selectedTechs } from '@lib/stores/projectsStore';
 import { useStore } from '@nanostores/react';
 import { Check, Filter, Search, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useTranslations } from '@i18n/utils';
+import type { Languages } from '@api/companies';
 
-export function ProjectsFilter() {
+interface Props {
+  lang?: Languages;
+}
+
+export function ProjectsFilter({ lang = 'en' }: Props) {
   const search = useStore($search);
+  const t = useTranslations(lang);
   const selectedTechs = useStore($selectedTechs);
   const { frontend, backend, blockchain, others } = getTechnologies();
 
@@ -48,10 +55,10 @@ export function ProjectsFilter() {
   };
 
   const allTechs = [
-    { label: 'Frontend', items: frontend },
-    { label: 'Backend', items: backend },
-    { label: 'Blockchain', items: blockchain },
-    { label: 'Others', items: others },
+    { label: t('tech.frontend'), items: frontend },
+    { label: t('tech.backend'), items: backend },
+    { label: t('tech.blockchain'), items: blockchain },
+    { label: t('tech.others'), items: others },
   ];
 
   return (
@@ -62,7 +69,7 @@ export function ProjectsFilter() {
             type='text'
             value={search}
             onChange={(e) => $search.set(e.target.value)}
-            placeholder='Search projects...'
+            placeholder={t('projects.searchPlaceholder')}
             className='w-[340px] rounded-full focus-within:border-[#ff2975]/40'
             icon={<Search className='size-4' />}
             clearable={true}
@@ -73,7 +80,7 @@ export function ProjectsFilter() {
             <DropdownMenuTrigger asChild>
               <button className='flex h-10 w-auto cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-medium text-[13px] text-foreground/70 transition-all hover:border-white/20 hover:text-foreground'>
                 <Filter className='size-3.5' />
-                Filters
+                {t('projects.filters')}
                 {selectedTechs.length > 0 && (
                   <span className='ml-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#ff2975] text-[10px] text-white'>
                     {selectedTechs.length}
@@ -88,7 +95,7 @@ export function ProjectsFilter() {
             >
               <DropdownMenuGroup>
                 <DropdownMenuLabel className='text-foreground/50'>
-                  Filter by Technologies
+                  {t('projects.filterByTech')}
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuSeparator className='bg-white/5' />
@@ -141,7 +148,7 @@ export function ProjectsFilter() {
                     onSelect={clearFilters}
                     className='justify-center font-medium text-[#ff2975] text-[12px] focus:bg-[#ff2975]/10 focus:text-[#ff2975]'
                   >
-                    Clear all filters
+                    {t('projects.clearFilters')}
                   </DropdownMenuItem>
                 </>
               )}
@@ -154,7 +161,7 @@ export function ProjectsFilter() {
         <div className='fade-in z-20 mx-auto flex w-full max-w-[1240px] animate-in items-center justify-end duration-300'>
           <div className='flex flex-wrap items-center gap-2'>
             <span className='mr-1 text-[11px] text-foreground/40'>
-              Active filters:
+              {t('projects.activeFilters')}
             </span>
             {selectedTechs.map((techName) => {
               const technologie = techByName[techName];

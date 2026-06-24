@@ -5,15 +5,19 @@ import { Search } from 'lucide-react';
 import { useMemo } from 'react';
 import { ProjectsGrid } from './ProjectsGrid';
 import { ProjectsList } from './ProjectsList';
+import { useTranslations } from '@i18n/utils';
+import type { Languages } from '@api/companies';
 
 interface ProjectsDisplayProps {
   projects: Project[];
+  lang?: Languages;
 }
 
-export function ProjectsDisplay({ projects }: ProjectsDisplayProps) {
+export function ProjectsDisplay({ projects, lang = 'en' }: ProjectsDisplayProps) {
   const search = useStore($search);
   const selectedTechs = useStore($selectedTechs);
   const viewMode = useStore($viewMode);
+  const t = useTranslations(lang);
 
   const filteredProjects = useMemo(() => {
     const searchLower = search.toLowerCase();
@@ -49,18 +53,17 @@ export function ProjectsDisplay({ projects }: ProjectsDisplayProps) {
         </div>
         <div>
           <h3 className='font-semibold text-[18px] text-foreground'>
-            No projects found
+            {t('projects.noProjectsFound')}
           </h3>
           <p className='text-[14px] text-foreground/50'>
-            Try adjusting your search or filters to find what you're looking
-            for.
+            {t('projects.noProjectsDesc')}
           </p>
         </div>
         <button
           onClick={clearFilters}
           className='cursor-pointer rounded-md border border-white/10 bg-white/5 px-4 py-2 font-medium text-[14px] text-foreground transition-colors hover:bg-white/10 lg:w-auto'
         >
-          Clear all filters
+          {t('projects.clearFilters')}
         </button>
       </div>
     );
@@ -69,9 +72,9 @@ export function ProjectsDisplay({ projects }: ProjectsDisplayProps) {
   return (
     <div id='projects-container' className='relative min-h-[400px]'>
       {viewMode === 'grid' ? (
-        <ProjectsGrid projects={filteredProjects} />
+        <ProjectsGrid projects={filteredProjects} lang={lang} />
       ) : (
-        <ProjectsList projects={filteredProjects} />
+        <ProjectsList projects={filteredProjects} lang={lang} />
       )}
     </div>
   );

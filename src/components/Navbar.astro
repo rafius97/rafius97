@@ -1,19 +1,24 @@
 ---
 import Link from '@components/Link.astro';
 import { Menu, X } from '@lucide/astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import LanguagePicker from '@components/LanguagePicker.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const items = [
   {
-    href: '/#experience',
-    title: 'Experience',
+    href: lang === 'es' ? '/es/#experience' : '/#experience',
+    title: t('nav.experience'),
   },
   {
-    href: '/#projects',
-    title: 'Projects',
+    href: lang === 'es' ? '/es/#projects' : '/#projects',
+    title: t('nav.projects'),
   },
   {
-    href: '/#contact',
-    title: 'Contact',
+    href: lang === 'es' ? '/es/#contact' : '/#contact',
+    title: t('nav.contact'),
   },
 ];
 ---
@@ -28,47 +33,65 @@ const items = [
         </Link>
       ))
     }
+    <div class="hidden md:block">
+      <LanguagePicker />
+    </div>
   </div>
 
-  {/* Mobile Menu Toggle Button */}
-  <button id="mobile-menu-toggle" class="md:hidden flex items-center text-foreground z-50 p-2 cursor-pointer transition-transform active:scale-95 hover:opacity-80">
-    <span class="sr-only">Toggle menu</span>
-    <Menu id="menu-icon" class="block w-6 h-6" />
-    <X id="close-icon" class="hidden w-6 h-6" />
+  {/* Mobile Menu Open Button */}
+  <button id="mobile-menu-open" class="md:hidden flex items-center text-foreground z-30 p-2 cursor-pointer transition-transform active:scale-95 hover:opacity-80">
+    <span class="sr-only">Open menu</span>
+    <Menu class="w-6 h-6" />
   </button>
 
   {/* Mobile Menu Overlay */}
-  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[100dvh] bg-background/98 backdrop-blur-lg z-40 flex-col items-start justify-start pt-32 px-8 gap-12 hidden animate-in fade-in duration-200">
-    {
-      items.map((item) => (
-        <a href={item.href} class="text-4xl font-bold tracking-wide text-foreground hover:text-primary-gradient-1 transition-colors mobile-link">
-          {item.title}
-        </a>
-      ))
-    }
+  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-[100dvh] bg-background/98 backdrop-blur-lg z-50 flex-col items-start justify-start hidden animate-in fade-in duration-200">
+    {/* Mobile Menu Top Bar */}
+    <div class="w-full flex items-center justify-between px-6 py-4">
+      <LanguagePicker />
+      <button id="mobile-menu-close" class="flex w-fit items-center text-foreground p-2 cursor-pointer transition-transform active:scale-95 hover:opacity-80">
+        <span class="sr-only">Close menu</span>
+        <X class="w-6 h-6" />
+      </button>
+    </div>
+
+    {/* Mobile Menu Links */}
+    <div class="flex flex-col gap-12 px-8 pt-16 w-full">
+      {
+        items.map((item) => (
+          <a href={item.href} class="text-4xl font-bold tracking-wide text-foreground hover:text-primary-gradient-1 transition-colors mobile-link">
+            {item.title}
+          </a>
+        ))
+      }
+    </div>
   </div>
 </nav>
 
 <script>
-  const toggleBtn = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+  document.addEventListener('astro:page-load', () => {
+    const openBtn = document.getElementById('mobile-menu-open');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  const toggleMenu = () => {
-    mobileMenu?.classList.toggle('hidden');
-    mobileMenu?.classList.toggle('flex');
-    menuIcon?.classList.toggle('hidden');
-    menuIcon?.classList.toggle('block');
-    closeIcon?.classList.toggle('hidden');
-    closeIcon?.classList.toggle('block');
-    document.body.classList.toggle('overflow-hidden');
-  };
+    const openMenu = () => {
+      mobileMenu?.classList.remove('hidden');
+      mobileMenu?.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    };
 
-  toggleBtn?.addEventListener('click', toggleMenu);
+    const closeMenu = () => {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    };
 
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', toggleMenu);
+    openBtn?.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
   });
 </script>

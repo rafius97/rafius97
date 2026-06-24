@@ -1,0 +1,114 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+import { Image } from 'astro:assets';
+import enFlag from '../assets/langs/en.png';
+import esFlag from '../assets/langs/es.png';
+import { ChevronDown, Check } from '@lucide/astro';
+
+const lang = getLangFromUrl(Astro.url);
+const path = Astro.url.pathname;
+
+const currentFlag = lang === 'en' ? enFlag : esFlag;
+
+const getTargetUrl = (targetLang: 'en' | 'es') => {
+  if (targetLang === lang) return '#';
+  if (targetLang === 'es') {
+    return `/es${path === '/' ? '' : path}`;
+  } else {
+    return path.replace(/^\/es/, '') || '/';
+  }
+};
+---
+
+<div class="relative w-fit language-picker-container">
+  <button 
+    class="language-picker-btn flex items-center justify-center gap-2 text-[13px] font-semibold text-foreground/80 hover:text-foreground hover:border-[#ff2975]/50 transition-all duration-300 border border-white/10 hover:shadow-[0_0_15px_rgba(255,41,117,0.2)] hover:bg-[#ff2975]/10 rounded-[8px] px-3 py-2 cursor-pointer bg-white/5 backdrop-blur-sm"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <Image src={currentFlag} alt={`${lang} flag`} class="w-4 h-4 rounded-sm object-cover opacity-90" />
+    <span>{lang.toUpperCase()}</span>
+    <ChevronDown class="w-3.5 h-3.5 opacity-70 transition-transform duration-200 chevron-icon" />
+  </button>
+
+  <div class="language-picker-dropdown absolute left-0 md:left-auto md:right-0 top-full mt-2 w-44 rounded-[12px] border border-white/10 bg-[#131313]/95 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.5)] opacity-0 invisible translate-y-2 transition-all duration-200 z-50 overflow-hidden">
+    <div class="flex flex-col gap-1 p-1.5">
+      <a 
+        href={lang === 'en' ? '#' : getTargetUrl('en')} 
+        class={`flex items-center gap-3 px-3 py-2.5 rounded-[8px] text-[13px] font-medium transition-colors ${lang === 'en' ? 'bg-white/10 text-foreground cursor-default' : 'text-foreground/70 hover:bg-white/5 hover:text-foreground'}`}
+        data-lang="en"
+      >
+        <Image src={enFlag} alt="English flag" class="w-5 h-5 rounded-sm object-cover shadow-sm" />
+        <span class="flex-1">English</span>
+        {lang === 'en' && <Check class="w-4 h-4 text-[#ff2975]" />}
+      </a>
+      
+      <a 
+        href={lang === 'es' ? '#' : getTargetUrl('es')} 
+        class={`flex items-center gap-3 px-3 py-2.5 rounded-[8px] text-[13px] font-medium transition-colors ${lang === 'es' ? 'bg-white/10 text-foreground cursor-default' : 'text-foreground/70 hover:bg-white/5 hover:text-foreground'}`}
+        data-lang="es"
+      >
+        <Image src={esFlag} alt="Spanish flag" class="w-5 h-5 rounded-sm object-cover shadow-sm" />
+        <span class="flex-1">Español</span>
+        {lang === 'es' && <Check class="w-4 h-4 text-[#ff2975]" />}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const containers = document.querySelectorAll('.language-picker-container');
+    
+    containers.forEach(container => {
+      const btn = container.querySelector('.language-picker-btn');
+      const dropdown = container.querySelector('.language-picker-dropdown');
+      const chevron = container.querySelector('.chevron-icon');
+      
+      let isOpen = false;
+
+      const toggleDropdown = (e: Event) => {
+        e.stopPropagation();
+        isOpen = !isOpen;
+        if (isOpen) {
+          dropdown?.classList.remove('opacity-0', 'invisible', 'translate-y-2');
+          dropdown?.classList.add('opacity-100', 'visible', 'translate-y-0');
+          chevron?.classList.add('rotate-180');
+          btn?.setAttribute('aria-expanded', 'true');
+        } else {
+          dropdown?.classList.add('opacity-0', 'invisible', 'translate-y-2');
+          dropdown?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+          chevron?.classList.remove('rotate-180');
+          btn?.setAttribute('aria-expanded', 'false');
+        }
+      };
+
+      const closeDropdown = () => {
+        if (!isOpen) return;
+        isOpen = false;
+        dropdown?.classList.add('opacity-0', 'invisible', 'translate-y-2');
+        dropdown?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        chevron?.classList.remove('rotate-180');
+        btn?.setAttribute('aria-expanded', 'false');
+      };
+
+      btn?.addEventListener('click', toggleDropdown);
+
+      document.addEventListener('click', (e) => {
+        if (isOpen && !container.contains(e.target as Node)) {
+          closeDropdown();
+        }
+      });
+
+      const links = container.querySelectorAll('a[data-lang]');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const targetLang = (e.currentTarget as HTMLElement).getAttribute('data-lang');
+          if (targetLang) {
+            localStorage.setItem('preferred_lang', targetLang);
+          }
+        });
+      });
+    });
+  });
+</script>
