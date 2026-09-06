@@ -21,5 +21,5 @@ export default defineConfig({
     },
   },
   site: 'https://rafius97.github.io',
-  base: '/rafius97/',
+  base: '/',
 });
