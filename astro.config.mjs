@@ -20,4 +20,6 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  site: 'rafius97.github.io',
+  base: '/rafius97/',
 });
