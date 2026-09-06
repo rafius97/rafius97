@@ -14,7 +14,7 @@ export const ui = {
     'home.title': 'Rafael Romero - Portfolio',
     'home.greeting': "Hi, I'm Rafael!",
     'home.description':
-      'Fullstack Web3 Engineer specializing in Blockchain architecture, decentralized ecosystems, and the convergence of AI and Web3. I deliver production-grade solutions across Solidity, TypeScript, and Python — from DeFi protocols and cross-chain bridges to AI-native data platforms.',
+      'Full Stack Software Engineer with 5+ years of experience building scalable web applications, distributed systems, and decentralized platforms. Skilled across TypeScript, React, Node.js, Python, and Solidity — bridging modern frontend and backend architectures with Web3 and AI tools.',
     'home.seeProjects': 'See Projects',
     'home.featuredProjects': 'Featured Projects',
     'home.viewAllProjects': 'View All Projects →',
@@ -40,7 +40,8 @@ export const ui = {
     'contact.disclaimer': 'By sending, you agree to receive a response by email.',
     'projects.title': 'Rafael Romero - All Projects',
     'projects.header': 'All Projects',
-    'projects.description': 'A complete collection of my Web3 engineering work, spanning AI-native data engines, DeFi protocols, cross-chain bridges, and consumer dApps. Explore the retro-futuristic gallery below to see secure and scalable decentralized solutions in action.',
+    'projects.description':
+      'A complete collection of my software engineering work, spanning AI-native query engines, scalable web applications, distributed systems, and decentralized protocols. Explore the retro-futuristic gallery below to see robust and scalable solutions in action.',
     'projects.subtitle': 'Projects',
     'projects.searchPlaceholder': 'Search projects...',
     'projects.filters': 'Filters',
@@ -65,7 +66,7 @@ export const ui = {
     'home.title': 'Rafael Romero - Portafolio',
     'home.greeting': '¡Hola, soy Rafael!',
     'home.description':
-      'Ingeniero Fullstack Web3 especializado en arquitectura Blockchain, ecosistemas descentralizados y la convergencia de IA y Web3. Desarrollo soluciones de nivel producción con Solidity, TypeScript y Python — desde protocolos DeFi y bridges cross-chain hasta plataformas de datos nativas de IA.',
+      'Ingeniero de Software Full Stack con más de 5 años de experiencia desarrollando aplicaciones web escalables, sistemas distribuidos y plataformas descentralizadas. Especializado en TypeScript, React, Node.js, Python y Solidity — conectando arquitecturas frontend y backend modernas con herramientas Web3 e IA.',
     'home.seeProjects': 'Ver Proyectos',
     'home.featuredProjects': 'Proyectos Destacados',
     'home.viewAllProjects': 'Ver todos →',
@@ -91,7 +92,8 @@ export const ui = {
     'contact.disclaimer': 'Al enviar, aceptas recibir una respuesta por correo electrónico.',
     'projects.title': 'Rafael Romero - Todos los proyectos',
     'projects.header': 'Todos los proyectos',
-    'projects.description': 'Una colección completa de mi trabajo de ingeniería Web3, que abarca motores de datos nativos de IA, protocolos DeFi, bridges y dApps. Puedes explorar la galería para ver soluciones descentralizadas seguras y escalables en acción.',
+    'projects.description':
+      'Una colección completa de mi trabajo de ingeniería de software, que abarca motores de consulta con IA, aplicaciones web escalables, sistemas distribuidos y protocolos descentralizados. Explora la galería para ver soluciones robustas y escalables en acción.',
     'projects.subtitle': 'Proyectos',
     'projects.searchPlaceholder': 'Buscar proyectos...',
     'projects.filters': 'Filtros',

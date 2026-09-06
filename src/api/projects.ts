@@ -47,30 +47,30 @@ export const projectsEn: Project[] = [
     companySlug: 'nuklai',
     title: 'Nexus',
     description:
-      'A flagship AI-native query engine acting as a unified virtual data lake. Expanded backend capabilities by developing and integrating MCP (Model Context Protocol) tools for verifiable, hallucination-free blockchain data retrieval in AI query engines, while leading the frontend implementation of a fully customizable analytics dashboard with Apache ECharts and multiple data source connectors.',
+      'AI-native query engine and virtual data lake. Engineered scalable backend microservices with Python and FastAPI, integrating Model Context Protocol (MCP) tools for verifiable, hallucination-free data retrieval in AI query workflows. Architected the frontend analytics dashboard using Vue, TypeScript, and Apache ECharts, integrating enterprise connectors for Google Cloud, MS SQL, and AlloyDB.',
     link: 'https://nexus.nukl.ai/',
     shortDescription:
-      'AI-native query engine with MCP integration for verifiable, hallucination-free blockchain data retrieval and customizable analytics dashboards.',
+      'AI-native query engine featuring Python/FastAPI backend, MCP tools for verifiable data queries, and Apache ECharts analytics dashboards.',
     achievements: [
       {
-        title: 'AI & Blockchain Integration',
+        title: 'AI & MCP Backend Services',
         description:
-          'Expanded the existing AI backend by developing a new MCP tool for blockchain data retrieval, and seamlessly integrated it into the frontend interface.',
+          'Engineered scalable backend microservices using Python and FastAPI, developing custom MCP tools for verifiable, hallucination-free data retrieval in AI query engines.',
       },
       {
-        title: 'Platform Optimization',
+        title: 'Frontend Analytics Architecture',
         description:
-          'Resolved critical Web3 bugs and implemented comprehensive UI/UX improvements to ensure platform stability and performance.',
+          'Led the frontend architecture using Vue, TypeScript, and Apache ECharts to build an interactive, fully customizable analytics dashboard.',
       },
       {
-        title: 'Dynamic Data Dashboards',
+        title: 'Enterprise Data Connectors',
         description:
-          'Led the frontend implementation of a fully customizable dashboard, integrating ECharts to render dynamic and interactive data visualizations.',
+          'Engineered frontend connectors for multiple enterprise data sources (including Google Cloud, MS SQL, and AlloyDB) to streamline data ingestion.',
       },
       {
-        title: 'Data Connector Integrations',
+        title: 'Performance & State Optimization',
         description:
-          "Expanded the frontend ecosystem by integrating new data source connectors—including Google Cloud, MS SQL, and AlloyDB—enhancing the platform's data retrieval capabilities.",
+          'Optimized complex reactive states and data hydration pipelines, resolving critical rendering bottlenecks and ensuring high performance.',
       },
     ],
     technologies: [
@@ -79,10 +79,10 @@ export const projectsEn: Project[] = [
       getTechnologyByName('Vite'),
       getTechnologyByName('Vue'),
       getTechnologyByName('TypeScript'),
-      getTechnologyByName('Wagmi'),
       getTechnologyByName('Python'),
       getTechnologyByName('FastAPI'),
       getTechnologyByName('Echarts'),
+      getTechnologyByName('Wagmi'),
     ],
     headerImage: 'src/assets/projects/nexus/nexus-header-image.png',
     featured: true,
@@ -150,31 +150,32 @@ export const projectsEn: Project[] = [
     companySlug: 'allianceblock',
     title: 'AllianceBridge',
     description:
-      'A decentralized, chain-agnostic cross-chain interoperability platform by the Nexera ecosystem. Led the comprehensive frontend migration from V1 to V2, translating complex Solidity logic into type-safe, responsive TypeScript interfaces. Ensured seamless cross-chain interoperability for secure token and NFT transfers across Ethereum, BNB Chain, Polygon, and Avalanche.',
+      'A cross-chain bridge and interoperability platform enabling seamless asset transfers across blockchain ecosystems. Led the complete architectural migration from legacy V1 to V2, implementing a modular React and TypeScript frontend, abstracting complex distributed protocols into intuitive user flows, and enabling secure token and NFT transfers across Ethereum, BNB Chain, Polygon, and Avalanche.',
     link: 'https://bridge.nexera.network/',
     shortDescription:
-      'Cross-chain interoperability platform enabling secure token and NFT transfers across major blockchain networks.',
+      'Cross-chain bridge platform built with React and TypeScript, delivering secure multi-chain token and NFT transfers.',
     achievements: [
       {
-        title: 'Project Optimization',
+        title: 'Full Architectural Migration (V1 to V2)',
         description:
-          'Proactively identified and resolved critical frontend bugs in V1, significantly improving dApp stability and performance.',
+          'Spearheaded the complete frontend migration to a modular, type-safe architecture in React and TypeScript, vastly improving performance and code maintainability.',
       },
       {
-        title: 'Interface Evolution',
+        title: 'Modular Component Architecture',
         description:
-          'Led the comprehensive V2 design migration, delivering a modernized user experience aligned with decentralized standards.',
+          'Developed reusable UI and multi-chain abstractions that streamlined complex cryptographic interactions into clear, user-friendly workflows.',
       },
       {
-        title: 'Web3 Architecture',
+        title: 'Cross-Chain Transaction Pipelines',
         description:
-          'Integrated robust Web3 features, ensuring seamless interoperability across multiple blockchain environments.',
+          'Implemented reliable transaction pipelines with real-time status messaging for token and NFT transfers across Ethereum, BNB Chain, Polygon, and Avalanche.',
       },
     ],
     technologies: [
       getTechnologyByName('React'),
       getTechnologyByName('TypeScript'),
       getTechnologyByName('TailwindCSS'),
+      getTechnologyByName('Node.js'),
       getTechnologyByName('Solidity'),
       getTechnologyByName('Wagmi'),
     ],
@@ -218,27 +219,28 @@ export const projectsEn: Project[] = [
   {
     slug: 'lmaas',
     companySlug: 'allianceblock',
-    title: 'LMaaS',
+    title: 'LMaaS (Liquidity Mining as a Service)',
     description:
-      'Maintained and optimized full-stack components (Frontend, Backend, and SDK) of a Liquidity Mining dApp, scaling the infrastructure to smoothly handle high-frequency Web3 interactions under intense network loads.',
+      'A distributed Liquidity Mining platform providing automated DeFi yield farming infrastructure. Maintained and scaled full-stack components across frontend interfaces, backend services, and client SDKs, optimizing transactional throughput and data synchronization under heavy network concurrency.',
     link: '#',
     shortDescription:
-      'Full-stack Liquidity Mining infrastructure optimized for high-frequency DeFi interactions.',
+      'Distributed Liquidity Mining infrastructure optimized for high-throughput DeFi interactions and real-time state synchronization.',
     achievements: [
       {
-        title: 'Full-Stack Maintenance',
+        title: 'Full-Stack Architecture & SDKs',
         description:
-          'Managed and enhanced the frontend, backend, and SDK components, ensuring a reliable ecosystem for liquidity providers.',
+          'Maintained and improved core frontend interfaces, backend microservices, and SDK packages, ensuring high reliability for liquidity providers.',
       },
       {
-        title: 'Web3 Scaling',
+        title: 'High-Concurrency Scaling',
         description:
-          'Optimized core Web3 functionalities to handle high-frequency interactions within the Liquidity Mining dApp.',
+          'Optimized state caching, API responses, and blockchain communication to smoothly handle high-frequency interactions during peak market loads.',
       },
     ],
     technologies: [
       getTechnologyByName('React'),
       getTechnologyByName('Node.js'),
+      getTechnologyByName('TypeScript'),
       getTechnologyByName('Solidity'),
       getTechnologyByName('Wagmi'),
     ],
@@ -250,29 +252,29 @@ export const projectsEn: Project[] = [
     companySlug: 'nuklai',
     title: 'Nuklai Marketplace',
     description:
-      'A collaborative decentralized data ecosystem marketplace (formerly DataTunnel). Developed robust unit tests and securely deployed V2 smart contracts to production, while coordinating with the frontend team to implement new designs and integrate reactive state management for Web3 data flows.',
+      'A collaborative data marketplace enabling organizations and individuals to discover, monetize, and query structured datasets. Coordinated full-stack application development, authored robust unit test suites with Hardhat, securely deployed production V2 smart contracts, and integrated dynamic frontend state management for real-time data flows.',
     link: 'https://app.nukl.ai/',
     shortDescription:
-      'Decentralized data marketplace with production-grade smart contracts and reactive Web3 integrations.',
+      'Decentralized data marketplace with production-grade smart contracts, comprehensive unit testing, and reactive data flows.',
     achievements: [
       {
-        title: 'Smart Contract Deployment',
+        title: 'Smart Contract Engineering & Testing',
         description:
-          'Developed robust unit tests and securely deployed V2 smart contracts to production.',
+          'Authored and tested production V2 smart contracts using Hardhat and Solidity, establishing automated unit test coverage to ensure transactional security.',
       },
       {
-        title: 'Frontend Coordination',
+        title: 'Full-Stack Delivery & Reactive UI',
         description:
-          'Coordinated with the frontend team to execute new designs and features.',
+          'Coordinated with design and product teams to deliver responsive interfaces with reactive state management tailored to dynamic data streaming.',
       },
     ],
     technologies: [
       getTechnologyByName('React'),
       getTechnologyByName('TypeScript'),
       getTechnologyByName('TailwindCSS'),
+      getTechnologyByName('Vite'),
       getTechnologyByName('Hardhat'),
       getTechnologyByName('Solidity'),
-      getTechnologyByName('Vite'),
       getTechnologyByName('Viem'),
       getTechnologyByName('Wagmi'),
     ],
@@ -284,26 +286,26 @@ export const projectsEn: Project[] = [
     companySlug: 'nuklai',
     title: 'Bitcoin Sentiment Research Campaign',
     description:
-      'Full-stack Web3 platform for tracking Bitcoin sentiment. Engineered core smart contracts using Solidity and Hardhat to securely manage and store campaign survey data directly on-chain. Successfully integrated Chainlink Automation and Data Feeds to trigger and fetch real-time automated BTC price updates at precise timestamps.',
+      'A full-stack research platform built to track and record public sentiment data on Bitcoin. Developed responsive user interfaces, implemented automated on-chain data storage using Solidity and Hardhat, and integrated Chainlink Automation and Data Feeds to automatically fetch and synchronize real-time BTC/USD pricing at scheduled intervals.',
     repo: 'https://github.com/Nuklai?q=bitcoin-form',
     link: 'https://winner.nukl.ai/',
     shortDescription:
-      'Full-stack Web3 sentiment platform with on-chain data storage and Chainlink-powered automated price feeds.',
+      'Full-stack research platform featuring automated on-chain data persistence and Chainlink-powered market price feeds.',
     achievements: [
       {
-        title: 'Frontend Implementation & Web3 Integration',
+        title: 'Full-Stack Web & Interface Implementation',
         description:
-          'Translated complex Figma designs into a fully functional frontend and seamlessly integrated Web3 capabilities to handle blockchain interactions.',
+          'Built interactive, accessible user interfaces with seamless client-side state handling and form validation.',
       },
       {
-        title: 'Smart Contract Architecture',
+        title: 'On-Chain Data Storage & Smart Contracts',
         description:
-          'Independently developed the core smart contracts using Solidity and Hardhat to securely manage campaign data on-chain.',
+          'Engineered Solidity smart contracts using Hardhat to securely record and verify survey submissions directly on-chain.',
       },
       {
-        title: 'Chainlink Automation',
+        title: 'Chainlink Automation & Price Feeds',
         description:
-          'Successfully integrated Chainlink Data Feeds and Time-based Upkeep to reliably trigger and fetch automated BTC price updates exactly at required timestamps.',
+          'Integrated Chainlink Data Feeds with time-based Upkeep automation to fetch and synchronize live BTC/USD market pricing at exact timestamps without manual intervention.',
       },
     ],
     technologies: [
@@ -311,8 +313,8 @@ export const projectsEn: Project[] = [
       getTechnologyByName('React'),
       getTechnologyByName('TypeScript'),
       getTechnologyByName('TailwindCSS'),
-      getTechnologyByName('Solidity'),
       getTechnologyByName('Hardhat'),
+      getTechnologyByName('Solidity'),
       getTechnologyByName('Ethers'),
       getTechnologyByName('Wagmi'),
       getTechnologyByName('Viem'),
@@ -399,28 +401,34 @@ export const projectsEn: Project[] = [
     companySlug: 'cub3',
     title: 'Def Leppard Puzzle Game',
     description:
-      'Developed the core blockchain architecture and supporting backend services for a Web3 puzzle game built for a renowned music artist, delivering a seamless web gaming experience for a massive mainstream audience to collect NFT puzzle fragments.',
+      'A full-stack gamified web platform and digital puzzle experience created for rock band Def Leppard. Developed backend API services, blockchain architecture, and Shopify store integrations with fiat payment rails (Wyre), allowing mainstream audiences to collect and claim digital puzzle fragments using standard credit and debit cards.',
     link: '#',
     shortDescription:
-      'Web3 puzzle game delivering a seamless NFT collectible experience for a massive mainstream audience.',
+      'Gamified full-stack web platform connecting Shopify APIs, fiat payment processing, and digital collectible puzzle mechanics.',
     achievements: [
       {
-        title: 'Full-Stack Web3',
+        title: 'Backend Services & Session Architecture',
         description:
-          'Contributed heavily to both the blockchain architecture and backend services supporting the game.',
+          'Developed backend services with Node.js and Express to manage gameplay sessions, fragment tracking, and transactional validation.',
       },
       {
-        title: 'Mainstream Adoption',
+        title: 'Shopify E-Commerce & Fiat On-Ramp',
         description:
-          'Helped bridge the gap between entertainment and Web3 by delivering a high-profile, consumer-ready application.',
+          'Connected Shopify APIs with payment processing rails (Wyre), enabling mainstream users without crypto wallets to acquire digital collectibles with fiat currency.',
+      },
+      {
+        title: 'Interactive Gamified UI',
+        description:
+          'Built dynamic frontend game interfaces in React, providing smooth animations and real-time visual feedback for collected puzzle fragments.',
       },
     ],
     technologies: [
       getTechnologyByName('React'),
-      getTechnologyByName('Solidity'),
-      getTechnologyByName('Hardhat'),
       getTechnologyByName('Node.js'),
       getTechnologyByName('Express.js'),
+      getTechnologyByName('TypeScript'),
+      getTechnologyByName('Solidity'),
+      getTechnologyByName('Hardhat'),
       getTechnologyByName('Ethers'),
       getTechnologyByName('Shopify'),
     ],
@@ -487,20 +495,20 @@ export const projectsEn: Project[] = [
     companySlug: 'cub3',
     title: 'E-commerce NFT Marketplace',
     description:
-      'An innovative NFT marketplace enabling mainstream users to purchase NFTs via traditional fiat payment rails and crypto gateways (Wyre). Researched and integrated Shopify frameworks with Web3 features, and conducted critical feasibility analysis to migrate existing smart contracts to the Flow blockchain for scalability and gas optimization.',
+      'An e-commerce marketplace platform bridging mainstream retail with Web3 digital assets. Integrated Shopify framework APIs with crypto gateways (Wyre) to process fiat payments, and performed technical research on migrating smart contracts to the Flow blockchain for improved transaction speed and reduced gas costs.',
     link: '#',
     shortDescription:
       'NFT marketplace bridging mainstream e-commerce with Web3 through Shopify integration and fiat payment gateways.',
     achievements: [
       {
-        title: 'Shopify Integration',
+        title: 'Shopify Integration & Fiat Rails',
         description:
-          'Researched and integrated Shopify frameworks, enabling traditional fiat and mainstream approaches to NFT purchasing.',
+          'Researched and integrated Shopify frameworks, enabling traditional fiat and mainstream payment approaches to NFT purchasing.',
       },
       {
-        title: 'Blockchain Research',
+        title: 'Blockchain Scalability Research',
         description:
-          'Contributed critical research towards migrating the current smart contracts onto the Flow blockchain for better scalability.',
+          'Contributed critical research towards migrating existing smart contracts onto the Flow blockchain for better throughput and gas efficiency.',
       },
     ],
     technologies: [
@@ -520,30 +528,30 @@ export const projectsEs: Project[] = [
     companySlug: 'nuklai',
     title: 'Nexus',
     description:
-      'Motor de consultas nativo de IA que funciona como un lago de datos virtual unificado. Amplié las capacidades del backend desarrollando e integrando herramientas MCP (Model Context Protocol) para la recuperación de datos blockchain verificables y sin alucinaciones en motores de consulta de IA, liderando a su vez la implementación frontend de un panel de analíticas totalmente personalizable con Apache ECharts y múltiples conectores de fuentes de datos.',
+      'Motor de consultas nativo de IA y lago de datos virtual. Diseñé microservicios backend con Python y FastAPI, integrando herramientas del Protocolo de Contexto de Modelos (MCP) para permitir a modelos de IA realizar consultas verificables y sin alucinaciones sobre conjuntos de datos distribuidos. Diseñé la arquitectura del panel de analíticas frontend utilizando Vue, TypeScript y Apache ECharts, con conectores empresariales para Google Cloud, MS SQL y AlloyDB.',
     link: 'https://nexus.nukl.ai/',
     shortDescription:
-      'Motor de consultas con integración MCP para recuperación de datos blockchain verificable, sin alucinaciones, y paneles de analíticas personalizables.',
+      'Motor de consultas nativo de IA con backend en Python/FastAPI, integración MCP para datos verificables y paneles de analíticas con Apache ECharts.',
     achievements: [
       {
-        title: 'Integración de IA y Blockchain',
+        title: 'Servicios Backend de IA y MCP',
         description:
-          'Amplié el backend de IA existente desarrollando una nueva herramienta MCP para la recuperación de datos blockchain y la integré perfectamente en la interfaz del frontend.',
+          'Desarrollé microservicios backend escalables en Python/FastAPI y herramientas MCP personalizadas para la recuperación de datos verificables y precisa en flujos de IA.',
       },
       {
-        title: 'Optimización de Plataforma',
+        title: 'Arquitectura Frontend de Analíticas',
         description:
-          'Resolví errores críticos de Web3 e implementé mejoras integrales de UI/UX para asegurar la estabilidad y rendimiento de la plataforma.',
+          'Lideré la arquitectura frontend con Vue, TypeScript y Apache ECharts para construir un panel de analíticas interactivo y totalmente configurable.',
       },
       {
-        title: 'Paneles de Datos Dinámicos',
+        title: 'Conectores de Datos Empresariales',
         description:
-          'Lideré la implementación del frontend de un panel totalmente personalizable, integrando ECharts para renderizar visualizaciones de datos dinámicas e interactivas.',
+          'Construí conectores frontend para fuentes de datos empresariales, incluyendo Google Cloud, MS SQL y AlloyDB, agilizando la ingesta de datos.',
       },
       {
-        title: 'Integración de Conectores de Datos',
+        title: 'Optimización de Rendimiento y Estado',
         description:
-          "Amplié el ecosistema frontend integrando nuevos conectores de fuentes de datos, incluyendo Google Cloud, MS SQL y AlloyDB, mejorando las capacidades de recuperación de datos de la plataforma.",
+          'Optimizé estados reactivos complejos y flujos de datos dinámicos, resolviendo cuellos de botella de renderizado y asegurando alto rendimiento.',
       },
     ],
     technologies: [
@@ -552,10 +560,10 @@ export const projectsEs: Project[] = [
       getTechnologyByName('Vite'),
       getTechnologyByName('Vue'),
       getTechnologyByName('TypeScript'),
-      getTechnologyByName('Wagmi'),
       getTechnologyByName('Python'),
       getTechnologyByName('FastAPI'),
       getTechnologyByName('Echarts'),
+      getTechnologyByName('Wagmi'),
     ],
     headerImage: 'src/assets/projects/nexus/nexus-header-image.png',
     featured: true,
@@ -623,31 +631,32 @@ export const projectsEs: Project[] = [
     companySlug: 'allianceblock',
     title: 'AllianceBridge',
     description:
-      'Plataforma de interoperabilidad cross-chain descentralizada del ecosistema Nexera. Lideré la migración completa del frontend de V1 a V2, traduciendo lógica compleja de Solidity a interfaces TypeScript con tipado estricto y responsivas. Aseguré la interoperabilidad fluida para la transferencia segura de tokens y NFTs a través de Ethereum, BNB Chain, Polygon y Avalanche.',
+      'Plataforma de interoperabilidad y puente cross-chain para transferencias fluidas de activos entre ecosistemas blockchain. Lideré la migración arquitectónica completa de la versión legacy V1 a V2, implementando un frontend modular con React y TypeScript, abstrayendo protocolos distribuidos complejos en flujos de usuario intuitivos y permitiendo transferencias seguras de tokens y NFTs a través de Ethereum, BNB Chain, Polygon y Avalanche.',
     link: 'https://bridge.nexera.network/',
     shortDescription:
-      'Plataforma de interoperabilidad cross-chain para la transferencia segura de tokens y NFTs a través de redes blockchain principales.',
+      'Plataforma de puente cross-chain desarrollada con React y TypeScript para transferencias seguras de tokens y NFTs.',
     achievements: [
       {
-        title: 'Optimización del Proyecto',
+        title: 'Migración Arquitectónica Integral (V1 a V2)',
         description:
-          'Identifiqué y resolví proactivamente errores críticos del frontend en V1, mejorando significativamente la estabilidad y el rendimiento de la dApp.',
+          'Lideré la migración completa del frontend hacia una arquitectura modular con tipado estricto en React y TypeScript, mejorando drásticamente el rendimiento y mantenibilidad.',
       },
       {
-        title: 'Evolución de la Interfaz',
+        title: 'Arquitectura de Componentes Modulares',
         description:
-          'Lideré la migración completa del diseño de V2, ofreciendo una experiencia de usuario modernizada alineada con los estándares descentralizados.',
+          'Desarrollé abstracciones reutilizables de UI que simplificaron interacciones criptográficas complejas en flujos de usuario intuitivos.',
       },
       {
-        title: 'Arquitectura Web3',
+        title: 'Tuberías de Transacciones Cross-Chain',
         description:
-          'Integré funciones Web3 robustas, asegurando una interoperabilidad fluida en múltiples entornos de blockchain.',
+          'Implementé flujos de transacciones confiables con mensajería de estado en tiempo real para transferencias en Ethereum, BNB Chain, Polygon y Avalanche.',
       },
     ],
     technologies: [
       getTechnologyByName('React'),
       getTechnologyByName('TypeScript'),
       getTechnologyByName('TailwindCSS'),
+      getTechnologyByName('Node.js'),
       getTechnologyByName('Solidity'),
       getTechnologyByName('Wagmi'),
     ],
@@ -660,7 +669,8 @@ export const projectsEs: Project[] = [
           'src/assets/projects/alliancebridge/alliancebridge-connect-wallet.png',
         type: 'image',
         title: 'Conectar Billetera',
-        description: 'Interfaz de conexión de billetera para transferencias entre cadenas.',
+        description:
+          'Interfaz de conexión de billetera para transferencias entre cadenas.',
       },
       {
         resource:
@@ -691,27 +701,28 @@ export const projectsEs: Project[] = [
   {
     slug: 'lmaas',
     companySlug: 'allianceblock',
-    title: 'LMaaS',
+    title: 'LMaaS (Minería de Liquidez como Servicio)',
     description:
-      'Gestioné y optimicé los componentes full-stack (Frontend, Backend y SDK) de una dApp de Minería de Liquidez, escalando la infraestructura para soportar interacciones Web3 de alta frecuencia bajo escenarios de alta carga de red.',
+      'Plataforma distribuida de Minería de Liquidez que proporciona infraestructura automatizada para yield farming en DeFi. Mantuve y escalé los componentes full-stack a través del frontend, servicios backend y SDKs, optimizando el rendimiento transaccional y la sincronización de datos bajo alta concurrencia.',
     link: '#',
     shortDescription:
-      'Infraestructura full-stack de Minería de Liquidez optimizada para interacciones DeFi de alta frecuencia.',
+      'Infraestructura distribuida de Minería de Liquidez optimizada para interacciones DeFi de alta frecuencia y sincronización en tiempo real.',
     achievements: [
       {
-        title: 'Mantenimiento Full-Stack',
+        title: 'Arquitectura Full-Stack y SDKs',
         description:
-          'Gestioné y mejoré los componentes de frontend, backend y SDK, asegurando un ecosistema confiable para proveedores de liquidez.',
+          'Mantuve y optimicé interfaces frontend, microservicios backend y paquetes SDK, asegurando alta confiabilidad para proveedores de liquidez.',
       },
       {
-        title: 'Escalado Web3',
+        title: 'Escalado de Alta Concurrencia',
         description:
-          'Optimizé funcionalidades Web3 clave para manejar interacciones de alta frecuencia dentro de la dApp de Minería de Liquidez.',
+          'Optimizé el almacenamiento en caché de estados, respuestas de APIs y comunicación blockchain para manejar interacciones de alta frecuencia bajo picos de carga.',
       },
     ],
     technologies: [
       getTechnologyByName('React'),
       getTechnologyByName('Node.js'),
+      getTechnologyByName('TypeScript'),
       getTechnologyByName('Solidity'),
       getTechnologyByName('Wagmi'),
     ],
@@ -723,20 +734,20 @@ export const projectsEs: Project[] = [
     companySlug: 'nuklai',
     title: 'Nuklai Marketplace',
     description:
-      'Ecosistema descentralizado y colaborativo de mercado de datos (anteriormente DataTunnel). Desarrollé pruebas unitarias robustas y desplegué de manera segura los contratos inteligentes V2 en producción, coordinando con el equipo de frontend para implementar nuevos diseños e integrar estados reactivos masivos para flujos de datos Web3.',
+      'Mercado colaborativo de datos que permite a organizaciones e individuos descubrir, monetizar y consultar conjuntos de datos estructurados. Coordiné el desarrollo de la aplicación full-stack, desarrollé pruebas unitarias exhaustivas con Hardhat, desplegué de forma segura contratos inteligentes V2 en producción e integré gestión reactiva de estados en frontend para flujos de datos en tiempo real.',
     link: 'https://app.nukl.ai/',
     shortDescription:
-      'Mercado de datos descentralizado con contratos inteligentes de nivel producción e integraciones Web3 reactivas.',
+      'Mercado de datos descentralizado con contratos inteligentes de nivel producción, pruebas unitarias exhaustivas y flujos reactivos.',
     achievements: [
       {
-        title: 'Despliegue de Contratos Inteligentes',
+        title: 'Desarrollo de Smart Contracts y Pruebas Unitarias',
         description:
-          'Desarrollé pruebas unitarias robustas y desplegué de manera segura contratos inteligentes V2 en producción.',
+          'Diseñé y probé contratos inteligentes V2 con Hardhat y Solidity, estableciendo cobertura de pruebas automatizadas para garantizar confiabilidad transaccional.',
       },
       {
-        title: 'Coordinación de Frontend',
+        title: 'Entrega Full-Stack y UI Reactiva',
         description:
-          'Coordiné con el equipo de frontend para ejecutar nuevos diseños y características.',
+          'Coordiné con equipos de diseño y producto para entregar interfaces responsivas con gestión reactiva de estados para flujos de datos dinámicos.',
       },
     ],
     technologies: [
@@ -757,26 +768,26 @@ export const projectsEs: Project[] = [
     companySlug: 'nuklai',
     title: 'Campaña de Investigación de Sentimiento de Bitcoin',
     description:
-      'Plataforma Web3 full-stack para rastrear el sentimiento sobre Bitcoin. Desarrollé la arquitectura de contratos inteligentes centrales con Solidity y Hardhat para gestionar y almacenar datos de encuestas de forma segura on-chain. Integré con éxito Automatizaciones de Chainlink y Data Feeds para obtener actualizaciones del precio de BTC automatizadas y en tiempo real en marcas de tiempo precisas.',
+      'Plataforma de investigación full-stack desarrollada para recopilar y registrar el sentimiento público sobre Bitcoin. Desarrollé interfaces de usuario responsivas, implementé almacenamiento de datos on-chain con Solidity y Hardhat, e integré Chainlink Automation y Data Feeds para obtener y sincronizar automáticamente precios de mercado BTC/USD en intervalos programados.',
     repo: 'https://github.com/Nuklai?q=bitcoin-form',
     link: 'https://winner.nukl.ai/',
     shortDescription:
-      'Plataforma de sentimiento Web3 full-stack con almacenamiento on-chain y feeds de precios automatizados con Chainlink.',
+      'Plataforma de investigación full-stack con persistencia on-chain automatizada y feeds de precios de mercado con Chainlink.',
     achievements: [
       {
-        title: 'Implementación de Frontend e Integración Web3',
+        title: 'Implementación Web e Interfaces Full-Stack',
         description:
-          'Traducí complejos diseños de Figma a un frontend completamente funcional y lo integré sin problemas con capacidades Web3 para manejar interacciones de blockchain.',
+          'Construí interfaces de usuario interactivas y accesibles con manejo fluido de estado del lado del cliente y validación de formularios.',
       },
       {
-        title: 'Arquitectura de Contratos Inteligentes',
+        title: 'Almacenamiento On-Chain y Smart Contracts',
         description:
-          'Desarrollé de forma independiente los contratos inteligentes centrales utilizando Solidity y Hardhat para gestionar de manera segura los datos de la campaña en la cadena.',
+          'Diseñé contratos inteligentes en Solidity utilizando Hardhat para registrar y verificar envíos de encuestas directamente on-chain.',
       },
       {
-        title: 'Automatización de Chainlink',
+        title: 'Automatización y Feeds de Precios de Chainlink',
         description:
-          'Integré con éxito Chainlink Data Feeds y mantenimiento basado en tiempo para activar y obtener actualizaciones automatizadas del precio de BTC exactamente en las marcas de tiempo requeridas.',
+          'Integré Chainlink Data Feeds con mantenimiento automatizado por tiempo (Upkeep) para consultar y sincronizar precios BTC/USD en marcas de tiempo exactas.',
       },
     ],
     technologies: [
@@ -804,21 +815,24 @@ export const projectsEs: Project[] = [
         resource: 'src/assets/projects/bitcoin-campaign/btc-survey-form.png',
         type: 'image',
         title: 'Formulario de Encuesta',
-        description: 'El estado inicial del formulario de encuesta sobre el sentimiento de Bitcoin.',
+        description:
+          'El estado inicial del formulario de encuesta sobre el sentimiento de Bitcoin.',
       },
       {
         resource:
           'src/assets/projects/bitcoin-campaign/btc-survey-form-filled.png',
         type: 'image',
         title: 'Formulario de Encuesta Lleno',
-        description: 'Un formulario de encuesta completo listo para ser enviado.',
+        description:
+          'Un formulario de encuesta completo listo para ser enviado.',
       },
       {
         resource:
           'src/assets/projects/bitcoin-campaign/btc-survey-form-blockchain.png',
         type: 'image',
         title: 'Procesamiento de Transacción Blockchain',
-        description: 'Estado pendiente de transacción Web3 durante el envío de la encuesta.',
+        description:
+          'Estado pendiente de transacción Web3 durante el envío de la encuesta.',
       },
       {
         resource:
@@ -870,30 +884,36 @@ export const projectsEs: Project[] = [
   {
     slug: 'def-leppard-puzzle-game',
     companySlug: 'cub3',
-    title: 'Puzzle de Def Leppard',
+    title: 'Juego de Rompecabezas Def Leppard',
     description:
-      'Desarrollé la arquitectura blockchain central y los servicios backend de un juego de rompecabezas Web3 creado para un artista musical de renombre, ofreciendo una experiencia de juego web fluida para una audiencia masiva mainstream que recolecta fragmentos de NFTs.',
+      'Plataforma web gamificada full-stack y experiencia de rompecabezas digital desarrollada para la banda de rock Def Leppard. Desarrollé servicios de APIs backend, arquitectura blockchain e integraciones de tienda Shopify con pasarelas de pago fiat (Wyre), permitiendo a audiencias mainstream recolectar y reclamar fragmentos de rompecabezas digitales mediante tarjetas tradicionales.',
     link: '#',
     shortDescription:
-      'Juego de rompecabezas Web3 con experiencia fluida de colección de NFTs para una audiencia mainstream masiva.',
+      'Plataforma web gamificada full-stack que conecta APIs de Shopify, pagos fiat y mecánicas de rompecabezas de coleccionables digitales.',
     achievements: [
       {
-        title: 'Web3 Full-Stack',
+        title: 'Servicios Backend y Arquitectura de Sesiones',
         description:
-          'Contribuí enormemente a la arquitectura blockchain y los servicios backend que apoyan el juego.',
+          'Desarrollé servicios backend con Node.js y Express para gestionar sesiones de juego, seguimiento de fragmentos y validación transaccional.',
       },
       {
-        title: 'Adopción Principal',
+        title: 'E-Commerce con Shopify y Pagos Fiat',
         description:
-          'Ayudé a cerrar la brecha entre el entretenimiento y Web3 ofreciendo una aplicación lista para el consumidor de alto perfil.',
+          'Conecté APIs de Shopify con pasarelas de pago (Wyre), permitiendo a usuarios tradicionales sin billeteras cripto adquirir coleccionables digitales con moneda local.',
+      },
+      {
+        title: 'UI Gamificada e Interactiva',
+        description:
+          'Construí interfaces de juego dinámicas en React, ofreciendo animaciones fluidas y retroalimentación visual en tiempo real para los fragmentos recolectados.',
       },
     ],
     technologies: [
       getTechnologyByName('React'),
-      getTechnologyByName('Solidity'),
-      getTechnologyByName('Hardhat'),
       getTechnologyByName('Node.js'),
       getTechnologyByName('Express.js'),
+      getTechnologyByName('TypeScript'),
+      getTechnologyByName('Solidity'),
+      getTechnologyByName('Hardhat'),
       getTechnologyByName('Ethers'),
       getTechnologyByName('Shopify'),
     ],
@@ -906,14 +926,16 @@ export const projectsEs: Project[] = [
           'src/assets/projects/defleppard-puzzle/defleppard-landing-page.jpg',
         type: 'image',
         title: 'Página de Aterrizaje',
-        description: 'El punto de entrada principal para el juego de rompecabezas Def Leppard.',
+        description:
+          'El punto de entrada principal para el juego de rompecabezas Def Leppard.',
       },
       {
         resource:
           'src/assets/projects/defleppard-puzzle/defleppard-cover-image.jpg',
         type: 'image',
         title: 'Imagen de Portada',
-        description: 'Portada promocional principal para el juego de rompecabezas Def Leppard.',
+        description:
+          'Portada promocional principal para el juego de rompecabezas Def Leppard.',
       },
       {
         resource:
@@ -927,7 +949,8 @@ export const projectsEs: Project[] = [
           'src/assets/projects/defleppard-puzzle/defleppard-fragment-missing.png',
         type: 'image',
         title: 'Fragmento Faltante',
-        description: 'Estado de la UI mostrando fragmentos de rompecabezas faltantes.',
+        description:
+          'Estado de la UI mostrando fragmentos de rompecabezas faltantes.',
       },
       {
         resource:
@@ -966,14 +989,14 @@ export const projectsEs: Project[] = [
       'Mercado NFT que conecta e-commerce con Web3 mediante integración Shopify y pasarelas de pago fiat.',
     achievements: [
       {
-        title: 'Integración Shopify',
+        title: 'Integración Shopify y Pasarelas Fiat',
         description:
           'Investigué e integré los marcos de Shopify, habilitando enfoques tradicionales de fiat a la compra de NFTs.',
       },
       {
-        title: 'Investigación Blockchain',
+        title: 'Investigación de Escalabilidad Blockchain',
         description:
-          'Contribuí investigación crítica para la migración de los contratos inteligentes actuales a la blockchain Flow para una mejor escalabilidad.',
+          'Contribuí investigación crítica para la migración de los contratos inteligentes actuales a la blockchain Flow para una mejor escalabilidad y reducción de costos.',
       },
     ],
     technologies: [

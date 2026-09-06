@@ -23,6 +23,12 @@ import Viem from '@assets/tech/viem.png';
 import Vite from '@assets/tech/vite.svg';
 import Vue from '@assets/tech/vue.svg';
 import Wagmi from '@assets/tech/wagmi.svg';
+import PHP from '@assets/tech/php.svg';
+import CodeIgniter from '@assets/tech/codeigniter.svg';
+import Git from '@assets/tech/git.svg';
+import Github from '@assets/tech/github.svg';
+import Docker from '@assets/tech/docker.svg';
+import Bash from '@assets/tech/bash.svg';
 
 export interface Technology {
   name: string;
@@ -45,10 +51,12 @@ export const frontend: Technology[] = [
 export const backend: Technology[] = [
   { name: 'Node.js', image: Node.src },
   { name: 'Python', image: Python.src },
-  { name: 'Next.js', image: Next.src },
   { name: 'PostgreSQL', image: Postgresql.src },
   { name: 'FastAPI', image: Fastapi.src },
   { name: 'Express.js', image: Express.src },
+  { name: 'Next.js', image: Next.src },
+  { name: 'PHP', image: PHP.src },
+  { name: 'CodeIgniter', image: CodeIgniter.src },
 ];
 
 export const blockchain: Technology[] = [
@@ -64,6 +72,10 @@ export const others: Technology[] = [
   { name: 'Storybook', image: Storybook.src },
   { name: 'Shopify', image: Shopify.src },
   { name: 'Echarts', image: Echarts.src },
+  { name: 'Git', image: Git.src },
+  { name: 'GitHub', image: Github.src },
+  { name: 'Docker', image: Docker.src },
+  { name: 'Bash', image: Bash.src },
 ];
 
 export const getTechnologies = () => ({
