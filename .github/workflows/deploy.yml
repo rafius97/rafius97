@@ -17,16 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'yarn'
-
       - name: Install, build, and upload site output
         uses: withastro/action@v3
         with:
           package-manager: yarn@latest
+          node-version: '22'
 
   deploy:
     needs: build
